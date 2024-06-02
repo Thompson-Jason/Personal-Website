@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import NavLink from "@/components/navLink";
 
 const links = [
     { url: "/", title: "Home" },
@@ -19,13 +20,13 @@ const Navbar = () => {
 
 
     return(
-     <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48">
+     <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
          <div className="hidden md:flex gap-4 w-1/3">
              {links.map(link=>(
-                 <Link href={link.url} key={link.title}>{link.title}</Link>
+                 <NavLink link={link} key={link.url} />
              ))}
          </div>
-         <div className="md:hidden lg:flex w-1/3 items-center">
+         <div className="md:hidden lg:flex xl:w-1/3 xl:items-center">
              <Link href="/" className="text-sm bg-black rounded-md p-1 font-semibold flex items-center justify-center">
                  <span className="text-white mr-1">Jason </span>
                  <span className="w-20 h-8 rounded bg-white text-black mr-1 flex items-center justify-center">Thompson</span>
