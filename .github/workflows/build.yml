@@ -11,9 +11,9 @@ jobs:
     - name: Install NPM dependencies
       run: npm install
     - name: Build project assets
-      run: npm run build && ls
+      run: npm run build
     - name: Cache out directory
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: out/
         key: outDir
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Cache out directory
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: out/
         key: outDir
@@ -35,3 +35,5 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         dangerous-clean-slate: true
         local-dir: out/
+    - name: Delete Cache
+      run: gh cache delete outDir
