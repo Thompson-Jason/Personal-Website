@@ -1,5 +1,8 @@
 name: Build Next.js web application and deploy
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - develop
 jobs:
   build-project:
     name: Build project
@@ -32,7 +35,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        username: ${{ secrets.FTP_USERNAME_BETA }}
+        password: ${{ secrets.FTP_PASSWORD_BETA }}
         dangerous-clean-slate: true
         local-dir: out/
