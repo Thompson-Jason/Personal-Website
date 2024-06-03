@@ -15,8 +15,9 @@ jobs:
     - name: Cache out directory
       uses: actions/cache@v4
       with:
+        id: cache
         path: out/
-        key: outDir
+        key: ${{ runner.os }}-outDir
   web-deploy:
     name: Deploy
     needs: build-project
@@ -26,7 +27,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: out/
-        key: outDir
+        key: ${{ runner.os }}-outDir
     - name: Push files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
