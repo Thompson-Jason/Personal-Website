@@ -13,6 +13,7 @@ jobs:
       run: npm run build && ls
   web-deploy:
     name: Deploy
+    needs: build-project
     runs-on: ubuntu-latest
     steps:
     - name: Push files
