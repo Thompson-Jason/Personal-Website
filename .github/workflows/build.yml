@@ -1,4 +1,4 @@
-name: Build Next.js web application
+name: Build Next.js web application and deploy
 on: workflow_dispatch
 jobs:
   build-project:
@@ -11,3 +11,11 @@ jobs:
       run: npm install
     - name: Build project assets
       run: npm run build
+      
+  web-deploy:
+  - name: Deploy with FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.jasonthompson.org
+        username: u755684214.uploadToBeta
+        password: ${{ secrets.ftp_password }}
