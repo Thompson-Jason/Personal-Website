@@ -36,7 +36,3 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         dangerous-clean-slate: true
         local-dir: out/
-    - name: Delete Cache
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: gh cache delete outDir
