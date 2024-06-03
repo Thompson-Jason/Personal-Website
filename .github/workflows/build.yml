@@ -1,0 +1,36 @@
+name: Build Next.js web application and deploy
+on: workflow_dispatch
+jobs:
+  build-project:
+    name: Build project
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Install NPM dependencies
+      run: npm install
+    - name: Build project assets
+      run: npm run build && ls
+    - name: Cache out directory
+      uses: actions/cache@v3
+      with:
+        path: out/
+        key: outDir
+  web-deploy:
+    name: Deploy
+    needs: build-project
+    runs-on: ubuntu-latest
+    steps:
+    - name: Cache out directory
+      uses: actions/cache@v3
+      with:
+        path: out/
+        key: outDir
+    - name: Push files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        dangerous-clean-slate: true
+        local-dir: out/
