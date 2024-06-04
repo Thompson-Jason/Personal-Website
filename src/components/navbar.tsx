@@ -86,9 +86,9 @@ const Navbar = () => {
              </Link>
          </div>
          <div className="hidden md:flex gap-4">
-             <Link href="https://github.com/Thompson-Jason" target="_blank"><FontAwesomeIcon icon={faGithub} /></Link>
-             <Link href="https://www.linkedin.com/in/jason-thompson-761b7a19a/" target="_blank"><FontAwesomeIcon icon={faLinkedin} color={linkedInColor}/></Link>
-
+             <a href="/resume.pdf" download="resume.pdf" className=" flex justify-center items-center rounded px-2 bg-black text-white text-sm font-semibold">Download Resume</a>
+             <Link href="https://github.com/Thompson-Jason" target="_blank"><FontAwesomeIcon icon={faGithub} size="2xl"/></Link>
+             <Link href="https://www.linkedin.com/in/jason-thompson-761b7a19a/" target="_blank"><FontAwesomeIcon icon={faLinkedin} size="2xl" color={linkedInColor}/></Link>
          </div>
          <div className="md:hidden w-1/3">
              <button className="w-10 h-8 flex flex-col justify-between z-50 relative" onClick={() => setOpen(!open)}>
