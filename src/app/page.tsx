@@ -31,10 +31,7 @@ const Homepage = () => {
           >
             View My Work
           </Link>
-          <Link
-            href="/underconstruction"
-            className="p-4 rounded-lg ring-1 ring-black"
-          >
+          <Link href="/contact" className="p-4 rounded-lg ring-1 ring-black">
             Contact Me
           </Link>
         </div>

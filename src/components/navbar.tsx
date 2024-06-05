@@ -11,7 +11,7 @@ const links = [
   { url: "/", title: "Home" },
   { url: "/underconstruction", title: "About" }, //changing from "/about" to "/underconstruction"
   { url: "/underconstruction", title: "Portfolio" }, //changing from "/portfolio" to "/underconstruction"
-  { url: "/underconstruction", title: "Contact" }, //changing from "/contact" to "/underconstruction"
+  { url: "/contact", title: "Contact" },
 ];
 
 const Navbar = () => {
