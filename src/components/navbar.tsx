@@ -9,9 +9,9 @@ import { motion } from "framer-motion";
 
 const links = [
   { url: "/", title: "Home" },
-  { url: "/underconstruction", title: "About" }, //about changing from "/" to "/underconstruction"
-  { url: "/underconstruction", title: "Portfolio" }, //portfolio changing from "/" to "/underconstruction"
-  { url: "/underconstruction", title: "Contact" }, //contact changing from "/" to "/underconstruction"
+  { url: "/underconstruction", title: "About" }, //changing from "/about" to "/underconstruction"
+  { url: "/underconstruction", title: "Portfolio" }, //changing from "/portfolio" to "/underconstruction"
+  { url: "/underconstruction", title: "Contact" }, //changing from "/contact" to "/underconstruction"
 ];
 
 const Navbar = () => {
@@ -93,7 +93,7 @@ const Navbar = () => {
         <a
           href="/resume.pdf"
           download="resume.pdf"
-          className=" flex justify-center items-center rounded px-2 bg-black text-white text-sm font-semibold"
+          className=" flex justify-center items-center rounded px-2 bg-black text-white text-sm font-semibold hover:bg-white hover:text-black hover:duration-200"
         >
           Download Resume
         </a>
