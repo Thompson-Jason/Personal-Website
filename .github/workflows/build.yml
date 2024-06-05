@@ -37,6 +37,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME_BETA }}
           password: ${{ secrets.FTP_PASSWORD_BETA }}
-          # dangerous-clean-slate: true
-          dry-run: true
           local-dir: out/
