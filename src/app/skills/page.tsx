@@ -3,7 +3,7 @@ import Skillblock from "@/components/skillblock";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const AboutPage = () => {
+const SkillsPage = () => {
   type Skill = { name: string; desc: string };
 
   const skillList: Array<Skill> = [
@@ -119,4 +119,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default SkillsPage;
