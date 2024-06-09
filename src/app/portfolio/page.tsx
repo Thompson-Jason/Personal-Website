@@ -1,17 +1,17 @@
 "use client";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const PortfolioPage = () => {
-  return (
-    <motion.div
-      className="h-full"
-      initial={{ y: "-200vh" }}
-      animate={{ y: "0%" }}
-      transition={{ duration: 1 }}
-    >
-      <div>PortfolioPage</div>
-    </motion.div>
-  );
+  const [isRendered, setIsRendered] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsRendered(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+  return <div className={isRendered ? "" : "hidden"}>PortfolioPage</div>;
 };
 
 export default PortfolioPage;

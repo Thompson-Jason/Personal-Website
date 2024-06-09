@@ -1,10 +1,20 @@
 "use client";
 import Skillblock from "@/components/skillblock";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const SkillsPage = () => {
   type Skill = { name: string; desc: string };
+
+  const [isRendered, setIsRendered] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsRendered(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const skillList: Array<Skill> = [
     {
@@ -86,36 +96,33 @@ const SkillsPage = () => {
   ];
 
   return (
-    <motion.div
-      className="h-full"
-      initial={{ y: "-200vh" }}
-      animate={{ y: "0%" }}
-      transition={{ duration: 1 }}
-    >
-      <div className="h-full flex flex-col justify-around">
-        <h1 className="flex items-center justify-center font-semibold text-4xl mt-5">
-          Skills that I have and how I have them
-        </h1>
+    <div className={isRendered ? "" : "hidden"}>
+      <div className="h-screen flex flex-col items-center justify-evenly">
+        <div className="flex flex-col justify-center items-center font-semibold">
+          <h1 className="text-4xl">Skills that I have and how I have them</h1>
+          <h3 className="text-xl">Click on each skill to learn more!</h3>
+        </div>
+        {/* <div className="w-1/2 flex flex-row flex-wrap justify-center items-center"> */}
         <div className="flex gap-4 flex-wrap items-center justify-center px-96 w-auto">
           {skillList.map((skill: Skill) => (
             <Link
               href={`#${skill.name}`}
               key={skill.name}
-              className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black"
+              className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black"
             >
               {skill.name}
             </Link>
           ))}
         </div>
       </div>
-      <div className="h-auto flex flex-col justify-around text-center gap-8 mt-96 pb-10">
+      <div className="flex flex-col justify-center items-center gap-8 pb-6">
         {skillList.map((skill: Skill) => (
-          <div id={skill.name} key={skill.name} className="flex flex-col">
+          <div id={skill.name} key={skill.name} className="">
             <Skillblock skill={skill} />
           </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
