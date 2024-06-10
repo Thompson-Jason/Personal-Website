@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const links = [
   { url: "/", title: "Home" },
   { url: "/skills", title: "Skills" },
-  { url: "/underconstruction", title: "Portfolio" }, //changing from "/portfolio" to "/underconstruction"
+  { url: "/portfolio", title: "Portfolio" },
   { url: "/contact", title: "Contact" },
 ];
 

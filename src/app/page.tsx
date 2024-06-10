@@ -42,7 +42,7 @@ const Homepage = () => {
         </p>
         <div className="flex w-full gap-4">
           <Link
-            href="/underconstruction"
+            href="/portfolio"
             className=" p-4 rounded-lg ring-1 ring-black bg-black text-white"
           >
             View My Work
