@@ -26,7 +26,7 @@ const ProjectPage = ({ params }: Props) => {
 
   return (
     <div
-      className={`h-screen flex flex-col justify-between${
+      className={`h-screen flex flex-col justify-between ${
         isRendered ? "" : "hidden"
       }`}
     >
