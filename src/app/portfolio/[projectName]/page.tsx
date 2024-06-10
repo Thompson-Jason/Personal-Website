@@ -52,4 +52,10 @@ const ProjectPage = ({ params }: Props) => {
   );
 };
 
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    projectName: project.name,
+  }));
+}
+
 export default ProjectPage;
