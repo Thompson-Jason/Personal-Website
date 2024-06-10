@@ -1,5 +1,3 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import { Project, projects } from "@/data/projects";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -10,26 +8,13 @@ type Props = { params: { projectName: string } };
 const ProjectPage = ({ params }: Props) => {
   const { projectName } = params;
   const project = projects.find((proj) => proj.name === projectName)!;
-  const [isRendered, setIsRendered] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsRendered(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   if (!project) {
     return notFound();
   }
 
   return (
-    <div
-      className={`h-screen flex flex-col justify-between ${
-        isRendered ? "" : "hidden"
-      }`}
-    >
+    <div className="h-screen flex flex-col justify-between">
       <div className="relative w-full sm:h-[5vh] md:h-[20vh] lg:h-[40vh] xl:h-[50vh]">
         <div className="-z-10">
           <Image
