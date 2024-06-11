@@ -12,7 +12,7 @@ const NavLink = ({ link }) => {
     <div>
       <Link
         className={`rounded p-1 ${
-          pathName === link.url && "bg-black text-white"
+          pathName === link.url && "bg-[#494d64] text-[#cad3f5]"
         }`}
         href={link.url}
       >

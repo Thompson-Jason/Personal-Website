@@ -7,7 +7,7 @@ const Skillblock = (props: PropsList) => {
   return (
     <div
       id={props.skill.name}
-      className="bg-red-100 outline-double rounded-3xl flex flex-col justify-center items-center mx-auto overflow-auto"
+      className="bg-[#181926] outline-double rounded-3xl flex flex-col justify-center items-center mx-auto overflow-auto"
     >
       <h1 className="flex items-center justify-center font-semibold text-4xl mt-5">
         {props.skill.name}

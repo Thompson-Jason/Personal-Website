@@ -42,7 +42,7 @@ const ContactPage = () => {
 
   return (
     <div
-      className={`flex flex-col lg:flex-row justify-center items-center h-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl overflow-hidden ${
+      className={`flex flex-col lg:flex-row justify-center items-center h-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl overflow-hidden text-[#cad3f5] ${
         isRendered ? "" : "hidden"
       }`}
     >
@@ -64,7 +64,7 @@ const ContactPage = () => {
                 name="name"
                 placeholder="Name"
                 required
-                className="bg-transparent border-b-2 border-b-black outline-none"
+                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
               />
             </li>
             <li>
@@ -73,7 +73,7 @@ const ContactPage = () => {
                 name="email"
                 placeholder="Email"
                 required
-                className="bg-transparent border-b-2 border-b-black outline-none"
+                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
               />
             </li>
             <li>
@@ -82,7 +82,7 @@ const ContactPage = () => {
                 type="text"
                 name="subject"
                 required
-                className="bg-transparent border-b-2 border-b-black outline-none"
+                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
               />
             </li>
             <li>
@@ -90,23 +90,23 @@ const ContactPage = () => {
                 placeholder="Message"
                 name="message"
                 required
-                className="bg-transparent border-b-2 border-b-black outline-none"
+                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
               ></textarea>
             </li>
             <li className="flex flex-row items-center">
               <input
                 type="submit"
-                className="hover:animate-pulse bg-green-300 rounded-md px-4 py-1"
+                className="hover:animate-pulse bg-[#a6da95] rounded-md px-4 py-1 text-[#181926]"
                 value="Send"
               />
             </li>
             {success && (
-              <div className="text-green-400 font-semibold text-left">
+              <div className="text-[#a6da95] font-semibold text-left">
                 Your message has been sent successfully!
               </div>
             )}
             {error && (
-              <div className="text-red-500 font-semibold">
+              <div className="text-[#ed8796] font-semibold text-left">
                 Something went wrong!
               </div>
             )}

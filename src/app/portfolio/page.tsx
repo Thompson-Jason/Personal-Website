@@ -17,13 +17,13 @@ const PortfolioPage = () => {
 
   return (
     <div className={isRendered ? "" : "hidden"}>
-      <h1 className="text-4xl text-center font-semibold sm:px-8 md:px-12 lg:px-20 xl:px-48">
+      <h1 className="text-[#cad3f5] text-7xl text-center font-semibold sm:px-8 md:px-12 lg:px-20 xl:px-48">
         My different projects
       </h1>
-      <h3 className="text-xl text-center font-semibold">
+      <h3 className="text-xl text-[#cad3f5] text-center font-semibold">
         Click on each project to learn more!
       </h3>
-      <div className="flex flex-row flex-wrap justify-center gap-5 sm:py-3 md:py-8 lg:py-16 xl:py-24">
+      <div className="flex flex-row flex-wrap text-[#cad3f5] justify-center gap-5 sm:py-3 md:py-8 lg:py-16 xl:py-24">
         {projects.map((project: Project) => (
           <Link href={`/portfolio/${project.name}`} key={project.name}>
             <PortfolioPane project={project} />

@@ -16,7 +16,11 @@ const SkillsPage = () => {
   }, []);
 
   return (
-    <div className={`overflow-x-hidden ${isRendered ? "" : "hidden"}`}>
+    <div
+      className={`overflow-x-hidden text-[#cad3f5] ${
+        isRendered ? "" : "hidden"
+      }`}
+    >
       <div className="h-screen flex flex-col items-center justify-evenly">
         <div className="flex flex-col justify-center items-center font-semibold">
           <h1 className="text-4xl text-center">
@@ -29,7 +33,7 @@ const SkillsPage = () => {
             <Link
               href={`#${skill.name}`}
               key={skill.name}
-              className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black"
+              className="rounded p-2 text-sm cursor-pointer bg-[#181926] text-[#cad3f5] hover:bg-[#b7bdf8] hover:text-[#24273a]"
             >
               {skill.name}
             </Link>

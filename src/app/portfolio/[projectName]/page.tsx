@@ -14,7 +14,7 @@ const ProjectPage = ({ params }: Props) => {
   }
 
   return (
-    <div className="h-screen flex flex-col justify-between">
+    <div className="h-screen flex flex-col justify-between text-[#cad3f5]">
       <div className="relative w-full sm:h-[5vh] md:h-[20vh] lg:h-[40vh] xl:h-[50vh]">
         <div className="-z-10">
           <Image
@@ -28,7 +28,7 @@ const ProjectPage = ({ params }: Props) => {
       </div>
       <Link
         href={project.github_url}
-        className="text-4xl text-center font-semibold sm:px-8 md:px-12 lg:px-20 xl:px-48"
+        className="text-4xl text-center font-semibold sm:px-8 md:px-12 lg:px-20 xl:px-48 underline text-[#7dc4e4]"
       >
         {project.name.replace("_", " ")}
       </Link>

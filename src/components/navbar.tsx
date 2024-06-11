@@ -16,7 +16,6 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
-  let linkedInColor: string = "#0A66C2";
 
   const topVarients = {
     closed: {
@@ -24,7 +23,7 @@ const Navbar = () => {
     },
     opened: {
       rotate: 45,
-      backgroundColor: "rgb(255,255,255)",
+      backgroundColor: "rgb(202, 211, 245)",
     },
   };
 
@@ -43,7 +42,7 @@ const Navbar = () => {
     },
     opened: {
       rotate: -45,
-      backgroundColor: "rgb(255,255,255)",
+      backgroundColor: "rgb(202, 211, 245)",
     },
   };
 
@@ -73,7 +72,7 @@ const Navbar = () => {
 
   return (
     <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
-      <div className="hidden md:flex gap-4 w-1/3">
+      <div className="hidden md:flex gap-4 w-1/3 text-[#b7bdf8]">
         {links.map((link) => (
           <NavLink link={link} key={link.url} />
         ))}
@@ -81,10 +80,10 @@ const Navbar = () => {
       <div className="md:hidden lg:flex xl:w-1/3 xl:items-center">
         <Link
           href="/"
-          className="text-sm bg-black rounded-md p-1 font-semibold flex items-center justify-center"
+          className="text-sm bg-[#b7bdf8] rounded-md p-1 font-semibold flex items-center justify-center"
         >
-          <span className="text-white mr-1">Jason </span>
-          <span className="w-20 h-8 rounded bg-white text-black mr-1 flex items-center justify-center">
+          <span className="text-[#24273a] mr-1">Jason </span>
+          <span className="w-20 h-8 rounded bg-[#24273a] text-[#cad3f5] mr-1 flex items-center justify-center">
             Thompson
           </span>
         </Link>
@@ -93,18 +92,26 @@ const Navbar = () => {
         <a
           href="/resume.pdf"
           download="resume.pdf"
-          className=" flex justify-center items-center rounded px-2 bg-black text-white text-sm font-semibold hover:bg-white hover:text-black hover:duration-200"
+          className=" flex justify-center items-center rounded py-1 px-2 bg-[#b7bdf8] text-[#24273a] text-sm font-semibold hover:text-[#b7bdf8] hover:bg-[#494d64] hover:duration-200"
         >
           Download Resume
         </a>
         <Link href="https://github.com/Thompson-Jason" target="_blank">
-          <FontAwesomeIcon icon={faGithub} size="2xl" />
+          <FontAwesomeIcon
+            icon={faGithub}
+            size="2xl"
+            className="text-[#b7bdf8] hover:text-[#494d64]"
+          />
         </Link>
         <Link
           href="https://www.linkedin.com/in/jason-thompson-761b7a19a/"
           target="_blank"
         >
-          <FontAwesomeIcon icon={faLinkedin} size="2xl" color={linkedInColor} />
+          <FontAwesomeIcon
+            icon={faLinkedin}
+            size="2xl"
+            className="text-[#b7bdf8] hover:text-[#494d64]"
+          />
         </Link>
       </div>
       <div className="md:hidden w-1/3">
@@ -115,17 +122,17 @@ const Navbar = () => {
           <motion.div
             variants={topVarients}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-black rounded origin-left"
+            className="w-10 h-1 bg-[#181926] rounded origin-left"
           ></motion.div>
           <motion.div
             variants={centerVarients}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-black rounded"
+            className="w-10 h-1 bg-[#181926] rounded"
           ></motion.div>
           <motion.div
             variants={bottomVarients}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-black rounded origin-left"
+            className="w-10 h-1 bg-[#181926] rounded origin-left"
           ></motion.div>
         </button>
         {open && (
@@ -133,7 +140,7 @@ const Navbar = () => {
             variants={listVariants}
             initial="closed"
             animate="opened"
-            className="absolute top-0 left-0 flex flex-col w-screen h-screen bg-black text-white items-center justify-center gap-8 text-4xl z-10"
+            className="absolute top-0 left-0 flex flex-col w-screen h-screen bg-[#24273a] text-[#cad3f5] items-center justify-center gap-8 text-4xl z-10"
           >
             {links.map((link) => (
               <motion.div variants={listItemVariants} key={link.title}>
