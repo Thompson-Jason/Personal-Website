@@ -23,13 +23,13 @@ const Homepage = () => {
     >
       <div className="h-1/2 lg:h-full lg:w-1/2 relative">
         <Image
-          src={"/Kendra.jpeg"}
+          src={"/picture-of-me-homepage.png"}
           alt="temporary picture of a dog"
           fill
           className="object-contain"
         />
       </div>
-      <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center">
+      <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-[#cad3f5]">
         <h1 className="text-4xl font-bold md:text-6xl">
           Looking for Software Engineer roles.
         </h1>
@@ -43,11 +43,14 @@ const Homepage = () => {
         <div className="flex w-full gap-4">
           <Link
             href="/portfolio"
-            className=" p-4 rounded-lg ring-1 ring-black bg-black text-white"
+            className=" p-4 rounded-lg ring-1 ring-[#181926] bg-[#181926] text-[#cad3f5]"
           >
             View My Work
           </Link>
-          <Link href="/contact" className="p-4 rounded-lg ring-1 ring-black">
+          <Link
+            href="/contact"
+            className="p-4 rounded-lg ring-2 ring-[#181926] text-[#cad3f5]"
+          >
             Contact Me
           </Link>
         </div>
