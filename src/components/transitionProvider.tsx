@@ -9,11 +9,11 @@ import { usePathname } from "next/navigation";
 type LayoutProps = { children?: ReactNode };
 
 const TransitionProvider = (props: LayoutProps) => {
-  const pathName: string = usePathname();
+  let pageName: string = FormatPathName();
 
   return (
     <AnimatePresence mode="wait">
-      <div key={pathName} className="w-screen h-screen">
+      <div key={pageName} className="w-screen h-screen">
         <motion.div
           className="h-screen w-screen fixed bg-[#181926] rounded-b-[100px] z-40"
           animate={{ height: "0vh" }}
@@ -27,7 +27,7 @@ const TransitionProvider = (props: LayoutProps) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {pathName.substring(1)}
+          {pageName}
         </motion.div>
         <motion.div
           className="h-screen w-screen fixed bg-[#181926] rounded-t-[100px] bottom-0 z-40"
@@ -42,5 +42,21 @@ const TransitionProvider = (props: LayoutProps) => {
     </AnimatePresence>
   );
 };
+
+function FormatPathName(): string {
+  let pathName: string = usePathname();
+
+  pathName = pathName
+    .substring(pathName.lastIndexOf("/"), pathName.length)
+    .substring(1)
+    .replace("_", " ");
+  pathName = pathName.charAt(0).toUpperCase() + pathName.slice(1);
+
+  if (pathName === "") {
+    pathName = "Home";
+  }
+
+  return pathName;
+}
 
 export default TransitionProvider;
