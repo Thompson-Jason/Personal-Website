@@ -26,7 +26,7 @@ const SkillsPage = () => {
           <h1 className="text-4xl text-center">
             Skills that I have and how I have them
           </h1>
-          <h3 className="text-xl">Click on each skill to learn more!</h3>
+          <h3 className="pt-4 text-xl">Click on each skill to learn more!</h3>
         </div>
         <div className="flex gap-4 flex-wrap items-center justify-center w-1/2">
           {skillList.map((skill: Skill) => (
