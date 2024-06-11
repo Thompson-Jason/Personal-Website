@@ -22,11 +22,9 @@ const SkillsPage = () => {
       }`}
     >
       <div className="h-screen flex flex-col items-center justify-evenly">
-        <div className="flex flex-col justify-center items-center font-semibold">
-          <h1 className="text-4xl text-center">
-            Skills that I have and how I have them
-          </h1>
-          <h3 className="pt-4 text-xl">Click on each skill to learn more!</h3>
+        <div className="flex flex-col justify-center items-center font-semibold sm:outline-double sm:py-10 sm:px-14 sm:-m-10 md:py-10 md:px-20 md:-m-10 lg:py-16 lg:px-36 lg:-m-16 xl:py-20 xl:px-44 xl:-m-20">
+          <h1 className="text-6xl text-center">Skills and Background</h1>
+          <h1 className="pt-4 text-xl">Click on each skill to learn more!</h1>
         </div>
         <div className="flex gap-4 flex-wrap items-center justify-center w-1/2">
           {skillList.map((skill: Skill) => (
