@@ -13,12 +13,13 @@ jobs:
       - uses: jongwooo/next-cache@v1
       - name: Install NPM dependencies
         run: npm install
+      - name: Bundle .env file
+        run: touch .env; echo "NEXT_PUBLIC_SERVICE_ID = ${{secrets.NEXT_PUBLIC_SERVICE_ID}}" >> .env; echo "NEXT_PUBLIC_TEMPLATE_ID = ${{secrets.NEXT_PUBLIC_TEMPLATE_ID}}" >> .env; echo "NEXT_PUBLIC_PUBLIC_KEY = ${{secrets.NEXT_PUBLIC_PUBLIC_KEY}}" >> .env
       - name: Build project assets
         run: npm run build
       - name: Cache out directory
         uses: actions/cache@v4
         with:
-          id: cache
           path: out/
           key: ${{ runner.os }}-${{ github.run_id }}-outDir-develop
   web-deploy:
