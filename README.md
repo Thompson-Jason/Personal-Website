@@ -1,4 +1,4 @@
-# Personal Website
+# [Personal Website](https://jasonthompson.org)
 
 This repository contains the source code for my personal website built using Next.js. The site showcases my portfolio, skills, and contact information.
 
