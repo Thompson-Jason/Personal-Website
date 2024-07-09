@@ -24,14 +24,14 @@ const Homepage = () => {
       <div className="h-1/2 lg:h-full lg:w-1/2 relative">
         <Image
           src={"/picture-of-me-homepage.png"}
-          alt="temporary picture of a dog"
+          alt="Picture of me - Jason Thompson"
           fill
           className="object-contain"
         />
       </div>
       <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-[#cad3f5]">
         <h1 className="text-4xl font-bold md:text-6xl">
-          Looking for Software Engineer roles.
+          Software Engineer at Tyler Technologies.
         </h1>
         <p className="md:text-xl">
           Results-oriented Computer Science graduate with strong skills in Java,
