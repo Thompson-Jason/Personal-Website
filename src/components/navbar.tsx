@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import NavLink from "@/components/navLink";
 import { motion } from "framer-motion";
 
@@ -109,6 +110,13 @@ const Navbar = () => {
         >
           <FontAwesomeIcon
             icon={faLinkedin}
+            size="2xl"
+            className="text-[#b7bdf8] hover:text-[#494d64]"
+          />
+        </Link>
+        <Link href="https://notes.jasonthompson.org">
+          <FontAwesomeIcon
+            icon={faBookOpen}
             size="2xl"
             className="text-[#b7bdf8] hover:text-[#494d64]"
           />
