@@ -26,12 +26,12 @@ const Homepage = () => {
           src={"/picture-of-me-homepage.png"}
           alt="Picture of me - Jason Thompson"
           fill
-          className="object-contain"
+          className="rounded-t-3xl object-contain"
         />
       </div>
       <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-[#cad3f5]">
         <h1 className="text-4xl font-bold md:text-6xl">
-          Software Engineer at Tyler Technologies.
+          Application Developer at Tyler Technologies.
         </h1>
         <p className="md:text-xl">
           Results-oriented Computer Science graduate with strong skills in Java,
