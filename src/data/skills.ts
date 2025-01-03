@@ -23,6 +23,10 @@ export const skillList: Array<Skill> = [
     desc: "Python is another language that I started learning in college. At the time, I only really knew C++, and I wanted to expand my knowledge to other languages. Because of this, I decided to take my Artificial Intelligence course using Python instead of C++, like most of the class was using.",
   },
   {
+    name: "Rust",
+    desc: "Rust is a new addition to my skillset, as I've recently started learning it in my free time. My goal is to broaden my knowledge and contribute to an open-source project that I regularly use. This project has been incredibly valuable to me, and I'm excited to give back to the community while enhancing my programming abilities. Rust's unique features and growing popularity make it an excellent choice for expanding my technical repertoire."
+  },
+  {
     name: "React.js",
     desc: "I have been actively learning React.js and applying my knowledge to build a website, showcasing my growing proficiency with this powerful JavaScript library. Through hands-on experience, I have become familiar with React's core concepts such as components, state management, and hooks, enabling me to create dynamic and responsive user interfaces. This project reflects my ability to leverage React.js to develop modern web applications.",
   },
@@ -74,4 +78,8 @@ export const skillList: Array<Skill> = [
     name: "Multithreading",
     desc: "Multithreading is a skill that I started learning in college, giving me a strong understanding of the fundamentals of multithreading and the specifics of multithreading in C++. I was able to successfully utilize my strong knowledge of multithreading to help create a complex multithreaded application in my previous role at [24]7.ai.",
   },
+  {
+    name: "Docker",
+    desc: "I've been using Docker off and on since college, but I've gotten much more into it recently while building a home server. Now, I'm running multiple applications on my server, all managed with Docker Compose. It's been a great way to learn more about containerization and make my setup efficient and easy to manage."
+  }
 ];
