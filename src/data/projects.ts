@@ -21,8 +21,8 @@ export const projects: Project[] = [
         name: "DockSprout",
         short_desc: "A small fast CLI tool to help manage docker containers written in Rust",
         long_desc: "DockSprout is a Rust-based command-line tool I built to scratch a personal itch—simplifying the management of Docker Compose projects in my home lab. It recursively scans directories to locate docker-compose.yml files and automatically brings up the associated containers using Docker Compose. To provide better control, it supports a .compose-ignore file, allowing users to exclude specific directories. This project highlights my expertise in Rust development, CLI tooling, filesystem traversal, process automation, and Docker integration, making containerized environments easier to manage.",
-        img: "/coming-soon.png",
-        alt_text: "temp image",
+        img: "/docksprout-github.png",
+        alt_text: "A picture of the Github repo of the DockSprout project.",
         github_url: "https://github.com/Thompson-Jason/DockSprout"
       },
 
