@@ -14,7 +14,7 @@ const ProjectPage = ({ params }: Props) => {
   }
 
   return (
-    <div className="h-screen flex flex-col justify-between text-[#cad3f5]">
+    <div className="h-screen flex flex-col justify-around text-[#cad3f5]">
       <div className="relative w-full sm:h-[5vh] md:h-[20vh] lg:h-[40vh] xl:h-[50vh]">
         <div className="-z-10">
           <Image
