@@ -78,7 +78,7 @@ const Navbar = () => {
           <NavLink link={link} key={link.url} />
         ))}
       </div>
-      <div className="md:hidden lg:flex xl:w-1/3 xl:items-center">
+      <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
         <Link
           href="/"
           className="text-sm bg-[#b7bdf8] rounded-md p-1 font-semibold flex items-center justify-center"
