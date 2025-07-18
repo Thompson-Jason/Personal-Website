@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://jasonthompson.org
+
+# Sitemaps
+Sitemap: https://jasonthompson.org/sitemap.xml
