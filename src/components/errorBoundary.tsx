@@ -33,7 +33,7 @@ class ErrorBoundary extends Component<Props, State> {
               Oops! Something went wrong
             </h1>
             <p className="text-lg mb-6">
-              We're sorry, but something unexpected happened.
+              We&#39;re sorry, but something unexpected happened.
             </p>
             <button
               className="bg-primary-accent text-primary-secondary px-6 py-2 rounded-md hover:bg-primary-hover transition-colors"
