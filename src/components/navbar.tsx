@@ -73,7 +73,7 @@ const Navbar = () => {
 
   return (
     <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
-      <div className="hidden md:flex gap-4 w-1/3 text-[#b7bdf8]">
+      <div className="hidden md:flex gap-4 w-1/3 text-primary-accent">
         {links.map((link) => (
           <NavLink link={link} key={link.url} />
         ))}
@@ -81,10 +81,10 @@ const Navbar = () => {
       <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
         <Link
           href="/"
-          className="text-sm bg-[#b7bdf8] rounded-md p-1 font-semibold flex items-center justify-center"
+          className="text-sm bg-primary-accent rounded-md p-1 font-semibold flex items-center justify-center"
         >
-          <span className="text-[#24273a] mr-1">Jason </span>
-          <span className="w-20 h-8 rounded bg-[#24273a] text-[#cad3f5] mr-1 flex items-center justify-center">
+          <span className="text-primary-secondary mr-1">Jason </span>
+          <span className="w-20 h-8 rounded bg-primary-secondary text-primary-text mr-1 flex items-center justify-center">
             Thompson
           </span>
         </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
         <a
           href="/resume.pdf"
           download="resume.pdf"
-          className=" flex justify-center items-center rounded py-1 px-2 bg-[#b7bdf8] text-[#24273a] text-sm font-semibold hover:text-[#b7bdf8] hover:bg-[#494d64] hover:duration-200"
+          className="flex justify-center items-center rounded py-1 px-2 bg-primary-accent text-primary-secondary text-sm font-semibold hover:text-primary-accent hover:bg-primary-hover transition-colors duration-200"
         >
           Download Resume
         </a>
@@ -101,7 +101,7 @@ const Navbar = () => {
           <FontAwesomeIcon
             icon={faGithub}
             size="2xl"
-            className="text-[#b7bdf8] hover:text-[#494d64]"
+            className="text-primary-accent hover:text-primary-hover transition-colors"
           />
         </Link>
         <Link
@@ -111,14 +111,14 @@ const Navbar = () => {
           <FontAwesomeIcon
             icon={faLinkedin}
             size="2xl"
-            className="text-[#b7bdf8] hover:text-[#494d64]"
+            className="text-primary-accent hover:text-primary-hover transition-colors"
           />
         </Link>
         <Link href="https://notes.jasonthompson.org">
           <FontAwesomeIcon
             icon={faBookOpen}
             size="2xl"
-            className="text-[#b7bdf8] hover:text-[#494d64]"
+            className="text-primary-accent hover:text-primary-hover transition-colors"
           />
         </Link>
       </div>
@@ -130,17 +130,17 @@ const Navbar = () => {
           <motion.div
             variants={topVarients}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-[#181926] rounded origin-left"
+            className="w-10 h-1 bg-primary-bg rounded origin-left"
           ></motion.div>
           <motion.div
             variants={centerVarients}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-[#181926] rounded"
+            className="w-10 h-1 bg-primary-bg rounded"
           ></motion.div>
           <motion.div
             variants={bottomVarients}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-[#181926] rounded origin-left"
+            className="w-10 h-1 bg-primary-bg rounded origin-left"
           ></motion.div>
         </button>
         {open && (
@@ -148,7 +148,7 @@ const Navbar = () => {
             variants={listVariants}
             initial="closed"
             animate="opened"
-            className="absolute top-0 left-0 flex flex-col w-screen h-screen bg-[#24273a] text-[#cad3f5] items-center justify-center gap-8 text-4xl z-10"
+            className="absolute top-0 left-0 flex flex-col w-screen h-screen bg-primary-secondary text-primary-text items-center justify-center gap-8 text-4xl z-10"
           >
             {links.map((link) => (
               <motion.div variants={listItemVariants} key={link.title}>
