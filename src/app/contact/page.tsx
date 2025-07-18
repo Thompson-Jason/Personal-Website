@@ -3,9 +3,10 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { sendForm } from "@emailjs/browser";
 import { ReactTyped } from "react-typed";
+import { contactFormRateLimit } from "@/util/rateLimit";
 
 const ContactPage = () => {
-  const refForm: any = useRef();
+  const refForm: MutableRefObject<HTMLFormElement | null> = useRef(null);
 
   const [success, setSuccess] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
@@ -14,6 +15,14 @@ const ContactPage = () => {
   const serviceID: string = process.env.NEXT_PUBLIC_SERVICE_ID || "";
   const templateID: string = process.env.NEXT_PUBLIC_TEMPLATE_ID || "";
   const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY || "";
+
+  // Validate required environment variables
+  React.useEffect(() => {
+    if (!serviceID || !templateID || !publicKey) {
+      console.error("Missing required environment variables for EmailJS");
+      setError(true);
+    }
+  }, [serviceID, templateID, publicKey]);
 
   const typedText: Array<string> = ["Contact Me!"];
 
@@ -30,19 +39,47 @@ const ContactPage = () => {
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!refForm.current) {
+      setError(true);
+      return;
+    }
+
+    // Check rate limiting
+    const userIdentifier = "default"; // In a real app, you'd use IP or user ID
+    if (!contactFormRateLimit.canAttempt(userIdentifier)) {
+      const remainingTime = Math.ceil(
+        contactFormRateLimit.getRemainingTime(userIdentifier) / 1000
+      );
+      setError(true);
+      console.warn(
+        `Rate limit exceeded. Try again in ${remainingTime} seconds.`
+      );
+      return;
+    }
+
+    setSending(true);
+    setError(false);
+    setSuccess(false);
+
     sendForm(serviceID, templateID, refForm.current, publicKey).then(
       () => {
         setSuccess(true);
+        setSending(false);
+        // Reset form
+        if (refForm.current) {
+          refForm.current.reset();
+        }
       },
       () => {
         setError(true);
+        setSending(false);
       }
     );
   };
 
   return (
     <div
-      className={`flex flex-col lg:flex-row justify-center items-center h-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl overflow-hidden text-[#cad3f5] ${
+      className={`flex flex-col lg:flex-row justify-center items-center h-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl overflow-hidden text-primary-text ${
         isRendered ? "" : "hidden"
       }`}
     >
@@ -64,7 +101,7 @@ const ContactPage = () => {
                 name="name"
                 placeholder="Name"
                 required
-                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
+                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
               />
             </li>
             <li>
@@ -73,7 +110,7 @@ const ContactPage = () => {
                 name="email"
                 placeholder="Email"
                 required
-                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
+                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
               />
             </li>
             <li>
@@ -82,7 +119,7 @@ const ContactPage = () => {
                 type="text"
                 name="subject"
                 required
-                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
+                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
               />
             </li>
             <li>
@@ -90,24 +127,35 @@ const ContactPage = () => {
                 placeholder="Message"
                 name="message"
                 required
-                className="bg-transparent border-b-2 border-b-[#181926] outline-none"
+                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
               ></textarea>
             </li>
             <li className="flex flex-row items-center">
               <input
                 type="submit"
-                className="hover:animate-pulse bg-[#a6da95] rounded-md px-4 py-1 text-[#181926]"
-                value="Send"
+                disabled={sending}
+                className={`rounded-md px-4 py-1 text-primary-secondary transition-colors ${
+                  sending
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-primary-success hover:bg-primary-success/80 hover:animate-pulse"
+                }`}
+                value={sending ? "Sending..." : "Send"}
               />
             </li>
             {success && (
-              <div className="text-[#a6da95] font-semibold text-left">
-                Your message has been sent successfully!
+              <div
+                className="text-primary-success font-semibold text-left"
+                role="alert"
+              >
+                ✓ Your message has been sent successfully!
               </div>
             )}
             {error && (
-              <div className="text-[#ed8796] font-semibold text-left">
-                Something went wrong!
+              <div
+                className="text-primary-error font-semibold text-left"
+                role="alert"
+              >
+                ✗ Something went wrong! Please try again.
               </div>
             )}
           </ul>

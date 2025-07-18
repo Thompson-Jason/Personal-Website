@@ -17,7 +17,7 @@ const SkillsPage = () => {
 
   return (
     <div
-      className={`overflow-x-hidden text-[#cad3f5] ${
+      className={`overflow-x-hidden text-primary-text ${
         isRendered ? "" : "hidden"
       }`}
     >
@@ -31,7 +31,7 @@ const SkillsPage = () => {
             <Link
               href={`#${skill.name}`}
               key={skill.name}
-              className="rounded p-2 text-sm cursor-pointer bg-[#181926] text-[#cad3f5] hover:bg-[#b7bdf8] hover:text-[#24273a]"
+              className="rounded p-2 text-sm cursor-pointer bg-primary-bg text-primary-text hover:bg-primary-accent hover:text-primary-secondary transition-colors"
             >
               {skill.name}
             </Link>
@@ -39,9 +39,13 @@ const SkillsPage = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="flex flex-col w-1/2 justify-center items-center gap-8 pb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl pb-6">
           {skillList.map((skill: Skill) => (
-            <div id={skill.name} key={skill.name} className="">
+            <div
+              id={skill.name}
+              key={skill.name}
+              className="bg-primary-surface rounded-xl border border-primary-border shadow-md p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-success hover:scale-105"
+            >
               <Skillblock skill={skill} />
             </div>
           ))}

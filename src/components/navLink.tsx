@@ -4,8 +4,14 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// @ts-ignore
-const NavLink = ({ link }) => {
+type NavLinkProps = {
+  link: {
+    url: string;
+    title: string;
+  };
+};
+
+const NavLink = ({ link }: NavLinkProps) => {
   const pathName: string = usePathname();
 
   return (
