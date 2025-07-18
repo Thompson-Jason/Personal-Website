@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function middleware(_request: NextRequest) {
   // Create response
   const response = NextResponse.next();
 
   // Set security headers
   response.headers.set(
-    'Content-Security-Policy',
+    "Content-Security-Policy",
     `
       default-src 'self';
       script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api.emailjs.com;
@@ -19,13 +19,18 @@ export function middleware(request: NextRequest) {
       base-uri 'self';
       form-action 'self';
       upgrade-insecure-requests;
-    `.replace(/\s+/g, ' ').trim()
+    `
+      .replace(/\s+/g, " ")
+      .trim()
   );
 
-  response.headers.set('X-Frame-Options', 'DENY');
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  response.headers.set("X-Frame-Options", "DENY");
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  response.headers.set(
+    "Permissions-Policy",
+    "geolocation=(), microphone=(), camera=()"
+  );
 
   return response;
 }
@@ -39,6 +44,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 };
