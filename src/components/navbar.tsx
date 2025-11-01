@@ -72,13 +72,13 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
+    <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl relative">
       <div className="hidden md:flex gap-4 w-1/3 text-primary-accent">
         {links.map((link) => (
           <NavLink link={link} key={link.url} />
         ))}
       </div>
-      <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
         <Link
           href="/"
           className="text-sm bg-primary-accent rounded-md p-1 font-semibold flex items-center justify-center"

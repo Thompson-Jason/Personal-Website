@@ -1,4 +1,3 @@
-
 export type Skill = { name: string; desc: string };
 
 export const skillList: Array<Skill> = [
@@ -24,7 +23,7 @@ export const skillList: Array<Skill> = [
   },
   {
     name: "Rust",
-    desc: "Rust is a new addition to my skillset, as I've recently started learning it in my free time. My goal is to broaden my knowledge and contribute to an open-source project that I regularly use. This project has been incredibly valuable to me, and I'm excited to give back to the community while enhancing my programming abilities. Rust's unique features and growing popularity make it an excellent choice for expanding my technical repertoire."
+    desc: "Rust is a new addition to my skillset, as I've recently started learning it in my free time. My goal is to broaden my knowledge and contribute to an open-source project that I regularly use. This project has been incredibly valuable to me, and I'm excited to give back to the community while enhancing my programming abilities. Rust's unique features and growing popularity make it an excellent choice for expanding my technical repertoire.",
   },
   {
     name: "React.js",
@@ -33,6 +32,10 @@ export const skillList: Array<Skill> = [
   {
     name: "Next.js",
     desc: "I have been actively learning Next.js and applying my knowledge to build a website, demonstrating my growing proficiency with this versatile React framework. Through practical experience, I have become familiar with Next.js features such as server-side rendering, static site generation, and API routes. This project showcases my ability to leverage Next.js for creating highly performant and SEO-friendly web applications.",
+  },
+  {
+    name: "Nest.js",
+    desc: "I have been using Nest.js extensively at Capital One in my current role. Through hands-on experience, I have developed and maintained scalable backend services, leveraging Nest.js's modular architecture and TypeScript support. My work includes building RESTful APIs, integrating with databases, and implementing robust authentication and authorization systems. This experience has deepened my understanding of modern backend development and best practices with Nest.js.",
   },
   {
     name: "TailwindCSS",
@@ -80,6 +83,6 @@ export const skillList: Array<Skill> = [
   },
   {
     name: "Docker",
-    desc: "I've been using Docker off and on since college, but I've gotten much more into it recently while building a home server. Now, I'm running multiple applications on my server, all managed with Docker Compose. It's been a great way to learn more about containerization and make my setup efficient and easy to manage."
-  }
+    desc: "I've been using Docker off and on since college, but I've gotten much more into it recently while building a home server. Now, I'm running multiple applications on my server, all managed with Docker Compose. It's been a great way to learn more about containerization and make my setup efficient and easy to manage.",
+  },
 ];
