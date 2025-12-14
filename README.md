@@ -1,21 +1,41 @@
 # [Personal Website](https://jasonthompson.org)
 
-This repository contains the source code for my personal website built using Next.js. The site showcases my portfolio, skills, and contact information.
+This is the source code for my personal website, built with Next.js, TypeScript, and Tailwind CSS. The site showcases my portfolio, skills, and contact information, and is designed for performance, accessibility, and modern best practices.
 
 ## Features
 
-- **Next.js Framework**: Utilizes the power of Next.js for server-side rendering and static site generation.
-- **Tailwind CSS**: Styled using Tailwind CSS for modern and responsive design.
-- **TypeScript**: Written in TypeScript for type safety and better developer experience.
-- **Vercel Deployment**: Easily deployable on Vercel.
+- **Next.js App Router**: Server-side rendering, static site generation, and API routes.
+- **TypeScript**: End-to-end type safety and strict configuration.
+- **Tailwind CSS**: Custom semantic color system and responsive design.
+- **Accessibility**: ARIA roles, focus styles, keyboard navigation, and semantic HTML.
+- **SEO**: Per-page metadata, OpenGraph, robots.txt, and sitemap.xml.
+- **Security**: Content Security Policy, security headers, and client-side rate limiting.
+- **Error Handling**: React Error Boundary and user-friendly error messages.
+- **Performance**: Optimized images, responsive sizes, and minimal bundle size.
+- **Mobile Friendly**: Responsive layouts, touch targets, and mobile navigation.
+- **Developer Experience**: Utilities for analytics, rate limiting, and reusable style constants.
 
-## Learn More
+## Project Structure
 
-To learn more about the technologies used in this project, check out the following resources:
+- `src/app/` — Next.js app directory (pages, layouts, API, etc.)
+- `src/components/` — Reusable React components
+- `src/constants/` — Design tokens and style constants
+- `src/data/` — Portfolio and skills data
+- `src/util/` — Utilities (rate limiting, analytics)
+- `public/` — Static assets (images, robots.txt, etc.)
+- `tailwind.config.ts` — Tailwind CSS configuration
+- `tsconfig.json` — TypeScript configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Discover Tailwind CSS utilities and best practices.
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/) - Understand TypeScript basics and advanced types.
+## Improvements & Highlights
+
+- Comprehensive metadata and SEO for all pages
+- Strict TypeScript and improved type safety
+- ARIA and accessibility enhancements
+- Modern color system and design tokens
+- Error boundaries and loading wrappers
+- Security headers and CSP
+- Mobile-first responsive layouts
+- Privacy-friendly analytics utility
 
 ## License
 
