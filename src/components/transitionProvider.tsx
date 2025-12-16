@@ -49,7 +49,8 @@ function FormatPathName(): string {
   pathName = pathName
     .substring(pathName.lastIndexOf("/"), pathName.length)
     .substring(1)
-    .replace("_", " ");
+    .replace("_", " ")
+    .replace("-", " ");
   pathName = pathName.charAt(0).toUpperCase() + pathName.slice(1);
 
   if (pathName === "") {
