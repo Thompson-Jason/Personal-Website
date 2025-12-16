@@ -90,13 +90,13 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="hidden md:flex gap-4">
-        <a
+        {/* <a
           href="/resume.pdf"
           download="resume.pdf"
           className="flex justify-center items-center rounded py-1 px-2 bg-primary-accent text-primary-secondary text-sm font-semibold hover:text-primary-accent hover:bg-primary-hover transition-colors duration-200"
         >
           Download Resume
-        </a>
+        </a> */}
         <Link href="https://github.com/Thompson-Jason" target="_blank">
           <FontAwesomeIcon
             icon={faGithub}
