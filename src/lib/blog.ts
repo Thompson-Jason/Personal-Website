@@ -1,26 +1,31 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { BlogPostMeta } from "./types";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
-export function getAllPosts() {
-  const files = fs.readdirSync(blogDir);
+export function getAllPosts(): BlogPostMeta[] {
+  const blogFiles = fs.readdirSync(blogDir);
 
-  return files
-    .map((file) => {
-      const slug = file.replace(".md", "");
-      const fullPath = path.join(blogDir, file);
+  return blogFiles
+    .map((filename) => {
+      const slug = filename.replace(".md", "");
+      const fullPath = path.join(blogDir, filename);
       const fileContents = fs.readFileSync(fullPath, "utf8");
 
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
 
       return {
         slug,
-        ...data,
+        title: data.title,
+        date: data.date,
+        description: data.description,
+        tags: data.tags ?? [],
+        content,
       };
     })
-    .sort((a: any, b: any) => (a.date < b.date ? 1 : -1));
+    .sort((postA, postB) => (postA.date < postB.date ? 1 : -1));
 }
 
 export function getPost(slug: string) {
