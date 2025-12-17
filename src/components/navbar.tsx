@@ -148,11 +148,19 @@ const Navbar = () => {
             variants={listVariants}
             initial="closed"
             animate="opened"
-            className="absolute top-0 left-0 flex flex-col w-screen h-screen bg-primary-secondary text-primary-text items-center justify-center gap-8 text-4xl z-10"
+            className="absolute top-0 left-0 flex flex-col w-screen h-screen bg-primary-secondary text-primary-text items-center justify-center gap-8 text-4xl z-[9999]"
           >
             {links.map((link) => (
-              <motion.div variants={listItemVariants} key={link.title}>
-                <Link href={link.url} onClick={() => setOpen(!open)}>
+              <motion.div
+                variants={listItemVariants}
+                key={link.title}
+                className="z-[10000]"
+              >
+                <Link
+                  href={link.url}
+                  onClick={() => setOpen(!open)}
+                  className="relative z-[10001]"
+                >
                   {link.title}
                 </Link>
               </motion.div>
