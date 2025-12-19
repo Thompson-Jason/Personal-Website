@@ -85,13 +85,13 @@ const Navbar = () => {
         <Link
           href="/"
           className="text-sm bg-primary-accent rounded-md p-1 font-semibold flex items-center justify-center"
-          onClick={(e) => {
+          onClick={(event) => {
             if (isTransitioning) {
-              e.preventDefault();
+              event.preventDefault();
               return;
             }
             // Only intercept internal navigation
-            e.preventDefault();
+            event.preventDefault();
             startNavigate("/");
           }}
         >
@@ -166,13 +166,13 @@ const Navbar = () => {
               <motion.div variants={listItemVariants} key={link.title}>
                 <Link
                   href={link.url}
-                  onClick={(e) => {
+                  onClick={(event) => {
                     setOpen(false);
                     if (isTransitioning) {
-                      e.preventDefault();
+                      event.preventDefault();
                       return;
                     }
-                    e.preventDefault();
+                    event.preventDefault();
                     startNavigate(link.url);
                   }}
                 >

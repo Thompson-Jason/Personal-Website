@@ -26,8 +26,8 @@ const ContactPage = () => {
 
   const typedText: Array<string> = ["Contact Me!"];
 
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
+  const sendEmail = (event: React.FormEvent) => {
+    event.preventDefault();
 
     if (!refForm.current) {
       setError(true);

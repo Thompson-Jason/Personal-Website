@@ -17,13 +17,13 @@ const NavLink = ({ link }) => {
           pathName === link.url && "bg-[#494d64] text-[#cad3f5]"
         }`}
         href={link.url}
-        onClick={(e) => {
+        onClick={(event) => {
           if (isTransitioning) {
-            e.preventDefault();
+            event.preventDefault();
             return;
           }
           if (pathName !== link.url) {
-            e.preventDefault();
+            event.preventDefault();
             startNavigate(link.url);
           }
         }}
