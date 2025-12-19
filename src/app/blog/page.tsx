@@ -7,7 +7,6 @@ export const dynamic = "error";
 
 export default function BlogPage() {
   const posts = getAllPosts();
-
   return (
     <main
       className={`min-h-screen bg-primary-bg text-primary-text ${RESPONSIVE_PADDING} py-8`}
@@ -40,11 +39,11 @@ export default function BlogPage() {
                     ))}
                   </ul>
                 )}
-                <p className="mt-2 text-base text-primary-text/90">
-                  {post.description ?? generateDescription(post.content)}
-                </p>
-                <div className="mt-2 text-xs text-primary-text/60">
+                <div className="text-xs text-primary-text/60 mt-1">
                   {post.date}
+                </div>
+                <div className="text-sm text-primary-text/80 mt-2 line-clamp-3">
+                  {post.description ?? generateDescription(post.content)}
                 </div>
               </div>
             </Link>
