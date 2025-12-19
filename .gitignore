@@ -41,3 +41,4 @@ next-env.d.ts
 #Idea
 .idea/
 .idea/personal-website.iml
+content/blog/hello-world.md
