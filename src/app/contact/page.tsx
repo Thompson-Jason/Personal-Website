@@ -79,15 +79,15 @@ const ContactPage = () => {
         />
       </div>
       <div className="flex w-full lg:w-1/2 items-center justify-center lg:h-full">
-        <form ref={refForm} onSubmit={sendEmail}>
-          <ul className="rounded-xl text-xl flex flex-col gap-8 justify-center p-24">
+        <form ref={refForm} onSubmit={sendEmail} className="w-full max-w-xl">
+          <ul className="rounded-xl text-xl flex flex-col gap-6 sm:gap-8 justify-center p-6 sm:p-10 md:p-12 lg:p-16">
             <li>
               <input
                 type="text"
                 name="name"
                 placeholder="Name"
                 required
-                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
+                className="w-full bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
               />
             </li>
             <li>
@@ -96,7 +96,7 @@ const ContactPage = () => {
                 name="email"
                 placeholder="Email"
                 required
-                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
+                className="w-full bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
               />
             </li>
             <li>
@@ -105,7 +105,7 @@ const ContactPage = () => {
                 type="text"
                 name="subject"
                 required
-                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
+                className="w-full bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
               />
             </li>
             <li>
@@ -113,10 +113,10 @@ const ContactPage = () => {
                 placeholder="Message"
                 name="message"
                 required
-                className="bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors"
+                className="w-full bg-transparent border-b-2 border-b-primary-bg outline-none focus:border-b-primary-accent transition-colors min-h-28"
               ></textarea>
             </li>
-            <li className="flex flex-row items-center">
+            <li className="flex flex-row items-center pt-2">
               <input
                 type="submit"
                 disabled={sending}

@@ -24,7 +24,7 @@ const Homepage = () => {
           className="rounded-t-3xl object-contain"
         />
       </section>
-      <section className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text">
+      <section className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text text-center lg:text-left">
         <h1 className="text-4xl font-bold md:text-6xl">
           Software Engineer at Capital One.
         </h1>
@@ -35,7 +35,7 @@ const Homepage = () => {
           tools and Agile methodologies. Adept at problem-solving and
           collaborative team efforts.
         </p>
-        <div className="flex w-full gap-4">
+        <div className="flex w-full flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
           <Link
             href="/portfolio"
             className={BUTTON_STYLES.primary}
