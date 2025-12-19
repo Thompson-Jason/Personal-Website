@@ -1,6 +1,6 @@
 "use client";
 
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { MutableRefObject, useRef } from "react";
 import { sendForm } from "@emailjs/browser";
 import { ReactTyped } from "react-typed";
 import { contactFormRateLimit } from "@/util/rateLimit";
@@ -25,16 +25,6 @@ const ContactPage = () => {
   }, [serviceID, templateID, publicKey]);
 
   const typedText: Array<string> = ["Contact Me!"];
-
-  const [isRendered, setIsRendered] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsRendered(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,11 +68,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div
-      className={`flex flex-col lg:flex-row justify-center items-center h-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl overflow-hidden text-primary-text ${
-        isRendered ? "" : "hidden"
-      }`}
-    >
+    <div className="flex flex-col lg:flex-row justify-center items-center h-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl overflow-hidden text-primary-text">
       <div className="flex w-full lg:w-1/2 items-center justify-center lg:h-full text-3xl font-semibold">
         <ReactTyped
           strings={typedText}
