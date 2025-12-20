@@ -1,26 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { RESPONSIVE_PADDING, BUTTON_STYLES } from "@/constants/styles";
 
 const Homepage = () => {
-  const [isRendered, setIsRendered] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsRendered(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <main
-      className={`h-full flex flex-col lg:flex-row ${RESPONSIVE_PADDING} ${
-        isRendered ? "" : "hidden"
-      }`}
+      className={`h-full flex flex-col lg:flex-row ${RESPONSIVE_PADDING}`}
       aria-label="Homepage main content"
     >
       <section

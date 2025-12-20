@@ -1,26 +1,11 @@
 "use client";
 import PortfolioPane from "@/components/portfoliopane";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { projects, Project } from "@/data/projects";
 
 const PortfolioPage = () => {
-  const [isRendered, setIsRendered] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsRendered(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div
-      className={`pt-4 sm:pt-8 md:pt-12 lg:pt-20 xl:pt-32 ${
-        isRendered ? "" : "hidden"
-      }`}
-    >
+    <div className="pt-4 sm:pt-8 md:pt-12 lg:pt-20 xl:pt-32">
       <div className="flex flex-col items-center px-4">
         <div className="md:outline-double outline-[#cad3f5] p-4 m-4 inline-block md:py-6 md:px-10 md:-m-6 lg:py-14 lg:px-28 lg:-m-14 xl:py-20 xl:px-36 xl:-m-20">
           <h1 className="text-[#cad3f5] text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-semibold sm:px-4 md:px-8 lg:px-20 xl:px-48">

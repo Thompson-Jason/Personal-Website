@@ -3,16 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTransitionNavigation } from "@/components/transitionNavigation";
 
-type NavLinkProps = {
+interface NavLinkProps {
   link: {
     url: string;
     title: string;
   };
-};
+}
 
-const NavLink = ({ link }: NavLinkProps) => {
+const NavLink: React.FC<NavLinkProps> = ({ link }) => {
   const pathName: string = usePathname();
+  const { startNavigate, isTransitioning } = useTransitionNavigation();
 
   return (
     <div>
@@ -21,6 +23,16 @@ const NavLink = ({ link }: NavLinkProps) => {
           pathName === link.url && "bg-[#494d64] text-[#cad3f5]"
         }`}
         href={link.url}
+        onClick={(event) => {
+          if (isTransitioning) {
+            event.preventDefault();
+            return;
+          }
+          if (pathName !== link.url) {
+            event.preventDefault();
+            startNavigate(link.url);
+          }
+        }}
       >
         {link.title}
       </Link>
