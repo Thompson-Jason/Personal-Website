@@ -7,16 +7,19 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import NavLink from "@/components/navLink";
 import { motion } from "framer-motion";
+import { useTransitionNavigation } from "@/components/transitionNavigation";
 
 const links = [
   { url: "/", title: "Home" },
   { url: "/skills", title: "Skills" },
   { url: "/portfolio", title: "Portfolio" },
+  { url: "/blog", title: "Blog" },
   { url: "/contact", title: "Contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
+  const { startNavigate, isTransitioning } = useTransitionNavigation();
 
   const topVarients = {
     closed: {
@@ -82,6 +85,15 @@ const Navbar = () => {
         <Link
           href="/"
           className="text-sm bg-primary-accent rounded-md p-1 font-semibold flex items-center justify-center"
+          onClick={(event) => {
+            if (isTransitioning) {
+              event.preventDefault();
+              return;
+            }
+            // Only intercept internal navigation
+            event.preventDefault();
+            startNavigate("/");
+          }}
         >
           <span className="text-primary-secondary mr-1">Jason </span>
           <span className="w-20 h-8 rounded bg-primary-secondary text-primary-text mr-1 flex items-center justify-center">
@@ -158,8 +170,16 @@ const Navbar = () => {
               >
                 <Link
                   href={link.url}
-                  onClick={() => setOpen(!open)}
                   className="relative z-[10001]"
+                  onClick={(event) => {
+                    setOpen(false);
+                    if (isTransitioning) {
+                      event.preventDefault();
+                      return;
+                    }
+                    event.preventDefault();
+                    startNavigate(link.url);
+                  }}
                 >
                   {link.title}
                 </Link>

@@ -1,12 +1,14 @@
 # [Personal Website](https://jasonthompson.org)
 
-This is the source code for my personal website, built with Next.js, TypeScript, and Tailwind CSS. The site showcases my portfolio, skills, and contact information, and is designed for performance, accessibility, and modern best practices.
+This is the source code for my personal website, built with Next.js (App Router), TypeScript, and Tailwind CSS. The site includes a portfolio, skills, contact form, and a Markdown-powered blog, with a focus on performance, accessibility, and modern best practices.
 
 ## Features
 
-- **Next.js App Router**: Server-side rendering, static site generation, and API routes.
+- **Next.js App Router**: Page routing, layouts, and static rendering.
 - **TypeScript**: End-to-end type safety and strict configuration.
 - **Tailwind CSS**: Custom semantic color system and responsive design.
+- **Blog**: Markdown posts with frontmatter (via `gray-matter`).
+- **Page Transitions**: Framer Motion “curtain” transition that delays navigation until the screen is fully covered.
 - **Accessibility**: ARIA roles, focus styles, keyboard navigation, and semantic HTML.
 - **SEO**: Per-page metadata, OpenGraph, robots.txt, and sitemap.xml.
 - **Security**: Content Security Policy, security headers, and client-side rate limiting.
@@ -15,16 +17,50 @@ This is the source code for my personal website, built with Next.js, TypeScript,
 - **Mobile Friendly**: Responsive layouts, touch targets, and mobile navigation.
 - **Developer Experience**: Utilities for analytics, rate limiting, and reusable style constants.
 
+## Getting Started
+
+- Install dependencies: `npm install`
+- Run locally: `npm run dev`
+- Production build: `npm run build`
+- Start production server: `npm run start`
+
 ## Project Structure
 
 - `src/app/` — Next.js app directory (pages, layouts, API, etc.)
 - `src/components/` — Reusable React components
 - `src/constants/` — Design tokens and style constants
 - `src/data/` — Portfolio and skills data
+- `src/lib/` — Shared helpers (e.g., blog parsing)
 - `src/util/` — Utilities (rate limiting, analytics)
+- `content/blog/` — Markdown blog posts
 - `public/` — Static assets (images, robots.txt, etc.)
 - `tailwind.config.ts` — Tailwind CSS configuration
 - `tsconfig.json` — TypeScript configuration
+
+## Blog Content
+
+Blog posts live in `content/blog/*.md` and are parsed with `gray-matter`.
+
+Frontmatter fields used by the site:
+
+- `title`
+- `date`
+- `description`
+- `tags` (optional)
+
+## Transitions (How Navigation Works)
+
+The site uses a Framer Motion curtain transition to avoid flashing the next page before the transition is fully covering the screen:
+
+- Clicking a navbar link triggers `startNavigate(...)` via a context hook.
+- The curtain animates up (cover).
+- Only once fully covered, the router navigates.
+- Once the new route is active, the curtain animates down (reveal).
+
+Key files:
+
+- `src/components/transitionProvider.tsx`
+- `src/components/transitionNavigation.tsx`
 
 ## Improvements & Highlights
 
