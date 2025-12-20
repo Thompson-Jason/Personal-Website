@@ -5,8 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTransitionNavigation } from "@/components/transitionNavigation";
 
-// @ts-ignore
-const NavLink = ({ link }) => {
+interface NavLinkProps {
+  link: {
+    url: string;
+    title: string;
+  };
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ link }) => {
   const pathName: string = usePathname();
   const { startNavigate, isTransitioning } = useTransitionNavigation();
 
