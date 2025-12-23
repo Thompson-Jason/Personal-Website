@@ -1,6 +1,7 @@
 ---
 title: "Why I Added a Blog to My Personal Site"
 date: "2025-12-19"
+postNumber: 1
 tags: ["personal-site", "nextjs", "blog"]
 ---
 

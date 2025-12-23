@@ -4,4 +4,6 @@ export type BlogPostMeta = {
   date: string;
   description?: string;
   tags?: string[];
+  postNumber?: number;
+  content?: string;
 };
