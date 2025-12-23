@@ -1,4 +1,4 @@
-import { getAllPosts, getPost } from "@/lib/blog";
+import { getAllPosts, getPost, getPostByNumber } from "@/lib/blog";
 import { generateDescription } from "@/lib/description";
 import { remark } from "remark";
 import html from "remark-html";
@@ -9,23 +9,44 @@ const SITE_URL = "https://jasonthompson.org";
 export const dynamic = "error";
 
 export async function generateStaticParams() {
-  return getAllPosts().map((post: any) => ({
-    slug: post.slug,
-  }));
+  const posts = getAllPosts();
+  // Generate params for both slug and postNumber
+  const slugParams = posts.map((post) => ({ identifier: post.slug }));
+  const numberParams = posts
+    .filter((post) => typeof post.postNumber === "number")
+    .map((post) => ({ identifier: post.postNumber?.toString()! }));
+  // Remove duplicates (e.g., if slug is a number string)
+  const seen = new Set();
+  return [...slugParams, ...numberParams].filter((param) => {
+    if (seen.has(param.identifier)) return false;
+    seen.add(param.identifier);
+    return true;
+  });
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { identifier: string };
 }): Promise<Metadata> {
-  const { data, content } = getPost(params.slug);
-
+  const identifier = params.identifier;
+  let post;
+  if (/^\d+$/.test(identifier)) {
+    post = getPostByNumber(Number(identifier));
+  }
+  if (!post) {
+    try {
+      const { data, content } = getPost(identifier);
+      post = { data, content, slug: identifier };
+    } catch {
+      return {};
+    }
+  }
+  if (!post) return {};
+  const { data, content, slug } = post;
   const title = `${data.title} | Jason Thompson`;
   const description = data.description ?? generateDescription(content);
-
-  const canonical = `${SITE_URL}/blog/${params.slug}`;
-
+  const canonical = `${SITE_URL}/blog/${slug}`;
   return {
     title,
     description,
@@ -51,14 +72,37 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPost({
+export default async function BlogPostByIdentifier({
   params,
 }: {
-  params: { slug: string };
+  params: { identifier: string };
 }) {
-  const { content, data } = getPost(params.slug);
+  const identifier = params.identifier;
+  let post;
+  if (/^\d+$/.test(identifier)) {
+    post = getPostByNumber(Number(identifier));
+  }
+  if (!post) {
+    try {
+      const { data, content } = getPost(identifier);
+      post = { data, content, slug: identifier };
+    } catch {
+      return (
+        <main className="min-h-screen flex items-center justify-center text-primary-error text-2xl">
+          Post not found.
+        </main>
+      );
+    }
+  }
+  if (!post) {
+    return (
+      <main className="min-h-screen flex items-center justify-center text-primary-error text-2xl">
+        Post not found.
+      </main>
+    );
+  }
+  const { data, content } = post;
   const processed = await remark().use(html).process(content);
-
   return (
     <main
       className={`min-h-screen bg-primary-bg text-primary-text ${RESPONSIVE_PADDING} py-8 flex flex-col items-center`}

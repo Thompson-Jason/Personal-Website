@@ -17,6 +17,8 @@ jobs:
         run: touch .env; echo "NEXT_PUBLIC_SERVICE_ID = ${{secrets.NEXT_PUBLIC_SERVICE_ID}}" >> .env; echo "NEXT_PUBLIC_TEMPLATE_ID = ${{secrets.NEXT_PUBLIC_TEMPLATE_ID}}" >> .env; echo "NEXT_PUBLIC_PUBLIC_KEY = ${{secrets.NEXT_PUBLIC_PUBLIC_KEY}}" >> .env
       - name: Build project assets
         run: npm run build
+      - name: Copy .htaccess to out directory
+        run: cp src/util/.htaccess out/.htaccess
       - name: Cache out directory
         uses: actions/cache@v4
         with:
