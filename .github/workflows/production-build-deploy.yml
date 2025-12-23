@@ -15,6 +15,8 @@ jobs:
         run: npm install
       - name: Build project assets
         run: npm run build
+      - name: Copy .htaccess to out directory
+        run: cp src/util/.htaccess out/.htaccess
       - name: Cache out directory
         uses: actions/cache@v4
         with:
