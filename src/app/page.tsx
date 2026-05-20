@@ -43,13 +43,6 @@ const Homepage = () => {
           >
             View My Work
           </Link>
-          <Link
-            href="/contact"
-            className={BUTTON_STYLES.secondary}
-            aria-label="Contact me"
-          >
-            Contact Me
-          </Link>
         </div>
       </section>
     </main>
