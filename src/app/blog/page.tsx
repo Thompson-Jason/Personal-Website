@@ -24,7 +24,7 @@ export default function BlogPage() {
         <div className="w-full max-w-3xl mt-8 grid gap-6">
           {posts.map((post: any) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
-              className="bg-primary-surface rounded-xl border border-primary-border shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-accent hover:scale-[1.02]"
+              <div className="bg-primary-surface rounded-xl border border-primary-border shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-accent hover:scale-[1.02]">
                 <h3 className="text-2xl font-bold text-primary-accent hover:underline">
                   {post.title}
                 </h3>
