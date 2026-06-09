@@ -26,14 +26,13 @@ const Homepage = () => {
       </section>
       <section className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text text-center lg:text-left">
         <h1 className="text-4xl font-bold md:text-6xl">
-          Software Engineer at Capital One.
+          Hi, I&apos;m Jason Thompson.
         </h1>
         <p className="md:text-xl">
-          Results-oriented Computer Science graduate with strong skills in Java,
-          C++, and Python. Experienced Software Engineer with expertise in
-          Interactive Voice Response (IVR) systems, utilizing industry-standard
-          tools and Agile methodologies. Adept at problem-solving and
-          collaborative team efforts.
+          Software Engineer at Capital One, where I work across the stack with
+          TypeScript, Angular, C#, and .NET. Outside of work I ship side
+          projects, tinker in my home lab, and write about what I&apos;m
+          learning.
         </p>
         <div className="flex w-full flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
           <Link
@@ -42,6 +41,13 @@ const Homepage = () => {
             aria-label="View my work portfolio"
           >
             View My Work
+          </Link>
+          <Link
+            href="/blog"
+            className={BUTTON_STYLES.secondary}
+            aria-label="Read my blog"
+          >
+            Read My Blog
           </Link>
         </div>
       </section>
