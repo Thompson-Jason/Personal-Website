@@ -11,9 +11,9 @@ const SkillsPage = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center">
             Skills and Background
           </h1>
-          <h1 className="pt-2 sm:pt-4 text-base sm:text-lg md:text-xl">
+          <p className="pt-2 sm:pt-4 text-base sm:text-lg md:text-xl font-semibold">
             Click on each skill to learn more!
-          </h1>
+          </p>
         </div>
         <div className="flex gap-2 sm:gap-4 flex-wrap items-center justify-center w-full sm:w-4/5 md:w-2/3 lg:w-1/2 px-2">
           {skillList.map((skill: Skill) => (
@@ -33,7 +33,7 @@ const SkillsPage = () => {
             <div
               id={skill.name}
               key={skill.name}
-              className="bg-primary-surface rounded-xl border border-primary-border shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-success hover:scale-[1.02]"
+              className="bg-primary-surface rounded-xl border border-primary-border shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-accent hover:scale-[1.02]"
             >
               <Skillblock skill={skill} />
             </div>
