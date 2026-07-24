@@ -20,7 +20,7 @@ const PortfolioPane = (props: PropsList) => {
           priority={false}
         />
       </div>
-      <div className="flex items-center justify-center text-center w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2">
+      <div className="flex items-center justify-center text-center w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 min-h-[3rem]">
         {props.project.short_desc}
       </div>
     </div>

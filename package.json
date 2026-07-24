@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "blog:draft": "node scripts/create-draft-post.mjs",
     "start": "next start",
     "lint": "next lint"
   },
