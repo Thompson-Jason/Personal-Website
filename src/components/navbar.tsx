@@ -14,7 +14,6 @@ const links = [
   { url: "/skills", title: "Skills" },
   { url: "/portfolio", title: "Portfolio" },
   { url: "/blog", title: "Blog" },
-  { url: "/contact", title: "Contact" },
 ];
 
 const Navbar = () => {

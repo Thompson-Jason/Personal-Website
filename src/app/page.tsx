@@ -26,7 +26,7 @@ const Homepage = () => {
       </section>
       <section className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text text-center lg:text-left">
         <h1 className="text-4xl font-bold md:text-6xl">
-          Software Engineer at Capital One.
+          Hi, I&apos;m Jason Thompson.
         </h1>
         <p className="md:text-xl">
           Senior Software Engineer at Capital One, where I work across the stack
@@ -43,11 +43,11 @@ const Homepage = () => {
             View My Work
           </Link>
           <Link
-            href="/contact"
+            href="/blog"
             className={BUTTON_STYLES.secondary}
-            aria-label="Contact me"
+            aria-label="Read my blog"
           >
-            Contact Me
+            Read My Blog
           </Link>
         </div>
       </section>
