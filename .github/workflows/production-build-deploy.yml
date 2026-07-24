@@ -2,7 +2,7 @@ name: Build Next.js web application and deploy
 on:
   push:
     branches:
-      - main
+      - disabled-production-build-deploy
 jobs:
   build-project:
     name: Build project
