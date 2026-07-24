@@ -29,8 +29,8 @@ const Homepage = () => {
           Hi, I&apos;m Jason Thompson.
         </h1>
         <p className="md:text-xl">
-          Software Engineer at Capital One, where I work across the stack with
-          TypeScript, Angular, C#, and .NET. Outside of work I ship side
+          Senior Software Engineer at Capital One, where I work across the stack
+          with TypeScript, Angular, C#, and .NET. Outside of work I ship side
           projects, tinker in my home lab, and write about what I&apos;m
           learning.
         </p>
