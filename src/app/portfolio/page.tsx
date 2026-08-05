@@ -1,7 +1,7 @@
 "use client";
 import PortfolioPane from "@/components/portfoliopane";
 import Link from "next/link";
-import { projects, Project } from "@/data/projects";
+import { visibleProjects, Project } from "@/data/projects";
 
 const PortfolioPage = () => {
   return (
@@ -17,7 +17,7 @@ const PortfolioPage = () => {
         </div>
       </div>
       <div className="flex flex-row flex-wrap text-[#cad3f5] justify-center gap-4 sm:gap-5 px-4 sm:py-3 md:py-8 lg:py-16 xl:py-24">
-        {projects.map((project: Project) => (
+        {visibleProjects.map((project: Project) => (
           <Link href={`/portfolio/${project.name}`} key={project.name}>
             <PortfolioPane project={project} />
           </Link>
