@@ -6,6 +6,12 @@ type BaseProject = {
   alt_text: string;
   url: string;
   hidden?: boolean;
+  // ISO date (YYYY-MM-DD) for the last time you meaningfully touched this
+  // project. Bump it by hand when you work on something here even if you
+  // don't write a blog post about it — the homepage "Recently Active" card
+  // shows whichever is newer: this date, or your latest blog post.
+  // Left unset below since I don't know your real timelines; fill these in.
+  updated?: string;
 };
 
 type WebsiteProject = BaseProject & {
@@ -99,3 +105,13 @@ export const projects: Project[] = [
 ];
 
 export const visibleProjects = projects.filter((project) => !project.hidden);
+
+// Most recently touched visible project, based on `updated`. Returns null
+// if no visible project has an `updated` date set.
+export function getMostRecentlyUpdatedProject(): Project | null {
+  const dated = visibleProjects.filter((project) => project.updated);
+  if (dated.length === 0) return null;
+  return dated.reduce((latest, project) =>
+    project.updated! > latest.updated! ? project : latest
+  );
+}

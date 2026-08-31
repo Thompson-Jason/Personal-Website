@@ -2,6 +2,7 @@
 import Skillblock from "@/components/skillblock";
 import Link from "next/link";
 import { Skill, SkillCategory, skillList } from "@/data/skills";
+import { CARD_STYLES } from "@/constants/styles";
 
 const CATEGORY_ORDER: Array<SkillCategory> = [
   "Languages",
@@ -63,7 +64,7 @@ const SkillsPage = () => {
                   <div
                     id={skill.name}
                     key={skill.name}
-                    className="bg-primary-surface rounded-xl border border-primary-border shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-accent hover:scale-[1.02]"
+                    className={CARD_STYLES}
                   >
                     <Skillblock skill={skill} />
                   </div>

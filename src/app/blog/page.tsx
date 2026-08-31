@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
-import { RESPONSIVE_PADDING } from "@/constants/styles";
+import { RESPONSIVE_PADDING, CARD_HOVER_STYLES } from "@/constants/styles";
 import { generateDescription } from "@/lib/description";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRss } from "@fortawesome/free-solid-svg-icons";
@@ -38,7 +38,7 @@ export default function BlogPage() {
         <div className="w-full max-w-3xl mt-8 grid gap-6">
           {posts.map((post: any) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
-              <div className="bg-primary-surface rounded-xl border border-primary-border shadow-md p-4 sm:p-6 transition-all duration-200 hover:shadow-xl hover:border-primary-accent hover:scale-[1.02]">
+              <div className={CARD_HOVER_STYLES}>
                 <h3 className="text-2xl font-bold text-primary-accent hover:underline">
                   {post.title}
                 </h3>
