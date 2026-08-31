@@ -20,31 +20,31 @@ type Props = {
 // the *opposite* point from the cursor, so that corner reads as the anchor
 // that stays "laying down" instead of the whole card tilting symmetrically
 // around its center.
+//
+// Two-layer structure on purpose: mouse listeners live on an outer wrapper
+// that never itself gets a transform, and only the inner div tilts. If the
+// listeners and the transform were on the same element, tilting it shifts
+// its own hit-testable surface out from under a stationary cursor - that
+// triggers a real mouseleave, which resets the tilt, which puts the flat
+// edge back under the cursor, which re-triggers mouseenter, forever. The
+// outer wrapper's box never moves, so it can't jitter itself out from under
+// the cursor no matter how the inner card tilts.
 const TiltCard = ({ id, className = "", maxTiltDeg = 10, children }: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
-  // getBoundingClientRect() reflects the element's current *visual* (i.e.
-  // transformed) box, not its resting layout box. If we re-measured it on
-  // every mousemove, tilting the card would shift its own edges, which
-  // shifts the next frame's relX/relY, which changes the tilt again -
-  // a feedback loop that jitters worst right at the edges. Measure once on
-  // enter, while the card is still flat, and reuse that rect for the whole
-  // hover instead of re-measuring mid-tilt.
-  const restRectRef = useRef<DOMRect | null>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState<React.CSSProperties>({});
 
   const prefersReducedMotion = () =>
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  const handleMouseEnter = () => {
-    restRectRef.current = ref.current?.getBoundingClientRect() ?? null;
-  };
-
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (prefersReducedMotion()) return;
-    const rect = restRectRef.current ?? ref.current?.getBoundingClientRect();
-    if (!rect) return;
+    const el = outerRef.current;
+    if (!el) return;
 
+    // Safe to read live here - this element never gets a transform, so its
+    // rect never moves regardless of how the inner card tilts.
+    const rect = el.getBoundingClientRect();
     const relX = (event.clientX - rect.left) / rect.width; // 0 (left) -> 1 (right)
     const relY = (event.clientY - rect.top) / rect.height; // 0 (top) -> 1 (bottom)
 
@@ -60,7 +60,6 @@ const TiltCard = ({ id, className = "", maxTiltDeg = 10, children }: Props) => {
   };
 
   const handleMouseLeave = () => {
-    restRectRef.current = null;
     setStyle({
       transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)",
       transformOrigin: "center",
@@ -70,14 +69,17 @@ const TiltCard = ({ id, className = "", maxTiltDeg = 10, children }: Props) => {
   return (
     <div
       id={id}
-      ref={ref}
-      onMouseEnter={handleMouseEnter}
+      ref={outerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`${className} transition-transform duration-150 ease-out will-change-transform`}
-      style={style}
+      className="h-full"
     >
-      {children}
+      <div
+        className={`${className} h-full transition-transform duration-150 ease-out will-change-transform`}
+        style={style}
+      >
+        {children}
+      </div>
     </div>
   );
 };
