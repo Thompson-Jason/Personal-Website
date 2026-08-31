@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { ReactNode, useCallback } from "react";
 import Navbar from "./navbar";
 import { usePathname, useRouter } from "next/navigation";
@@ -31,18 +31,23 @@ const TransitionProvider = (props: LayoutProps) => {
         <div className="h-24">
           <Navbar />
         </div>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={pathname}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18, ease: "easeInOut" }}
-            className="h-[calc(100vh-6rem)]"
-          >
-            {props.children}
-          </motion.div>
-        </AnimatePresence>
+        {/*
+          No AnimatePresence/exit animation on purpose: exit animations need
+          the old page to keep rendering (and the new one to wait) until the
+          exit finishes, which produces a fade-out, a blank gap, then the new
+          page popping in - reads as a flash, not a transition. A plain
+          enter-only fade swaps instantly (like a normal link) and just
+          fades the new content in, no gap.
+        */}
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="h-[calc(100vh-6rem)]"
+        >
+          {props.children}
+        </motion.div>
       </div>
     </TransitionNavigationContext.Provider>
   );
