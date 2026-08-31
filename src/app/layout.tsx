@@ -24,6 +24,11 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    types: {
+      "application/rss+xml": "https://jasonthompson.org/rss.xml",
+    },
+  },
 };
 
 export default function RootLayout({

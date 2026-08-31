@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
 import { RESPONSIVE_PADDING } from "@/constants/styles";
 import { generateDescription } from "@/lib/description";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRss } from "@fortawesome/free-solid-svg-icons";
 
 export const dynamic = "error";
 
@@ -20,6 +22,18 @@ export default function BlogPage() {
           <h2 className="pt-2 sm:pt-4 text-base sm:text-lg md:text-xl text-center">
             Thoughts, tutorials, and updates
           </h2>
+          <div className="flex justify-center pt-3">
+            <Link
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Subscribe via RSS"
+              className="flex items-center gap-1 text-sm text-primary-accent hover:text-primary-hover transition-colors"
+            >
+              <FontAwesomeIcon icon={faRss} />
+              RSS
+            </Link>
+          </div>
         </div>
         <div className="w-full max-w-3xl mt-8 grid gap-6">
           {posts.map((post: any) => (
