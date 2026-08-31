@@ -14,11 +14,11 @@ const Homepage = () => {
 
   return (
     <main
-      className={`h-full flex flex-col lg:flex-row ${RESPONSIVE_PADDING}`}
+      className={`min-h-full lg:h-full flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 py-8 lg:py-0 ${RESPONSIVE_PADDING}`}
       aria-label="Homepage main content"
     >
       <section
-        className="h-1/2 lg:h-full lg:w-1/2 relative"
+        className="relative h-72 sm:h-96 shrink-0 lg:h-full lg:w-1/2"
         aria-label="Profile image"
       >
         <Image
@@ -30,7 +30,7 @@ const Homepage = () => {
           className="rounded-t-3xl object-contain"
         />
       </section>
-      <section className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text text-center lg:text-left">
+      <section className="lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text text-center lg:text-left">
         <HomepageIntro />
         <p className="md:text-xl">
           Senior Software Engineer at Capital One, where I work across the stack
