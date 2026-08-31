@@ -22,18 +22,29 @@ type Props = {
 // around its center.
 const TiltCard = ({ id, className = "", maxTiltDeg = 10, children }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  // getBoundingClientRect() reflects the element's current *visual* (i.e.
+  // transformed) box, not its resting layout box. If we re-measured it on
+  // every mousemove, tilting the card would shift its own edges, which
+  // shifts the next frame's relX/relY, which changes the tilt again -
+  // a feedback loop that jitters worst right at the edges. Measure once on
+  // enter, while the card is still flat, and reuse that rect for the whole
+  // hover instead of re-measuring mid-tilt.
+  const restRectRef = useRef<DOMRect | null>(null);
   const [style, setStyle] = useState<React.CSSProperties>({});
 
   const prefersReducedMotion = () =>
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
+  const handleMouseEnter = () => {
+    restRectRef.current = ref.current?.getBoundingClientRect() ?? null;
+  };
+
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (prefersReducedMotion()) return;
-    const el = ref.current;
-    if (!el) return;
+    const rect = restRectRef.current ?? ref.current?.getBoundingClientRect();
+    if (!rect) return;
 
-    const rect = el.getBoundingClientRect();
     const relX = (event.clientX - rect.left) / rect.width; // 0 (left) -> 1 (right)
     const relY = (event.clientY - rect.top) / rect.height; // 0 (top) -> 1 (bottom)
 
@@ -49,6 +60,7 @@ const TiltCard = ({ id, className = "", maxTiltDeg = 10, children }: Props) => {
   };
 
   const handleMouseLeave = () => {
+    restRectRef.current = null;
     setStyle({
       transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)",
       transformOrigin: "center",
@@ -59,6 +71,7 @@ const TiltCard = ({ id, className = "", maxTiltDeg = 10, children }: Props) => {
     <div
       id={id}
       ref={ref}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={`${className} transition-transform duration-150 ease-out will-change-transform`}
