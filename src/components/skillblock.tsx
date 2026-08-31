@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Skill } from "@/data/skills";
 
 type PropsList = { skill: Skill };
@@ -51,6 +52,16 @@ const Skillblock = (props: PropsList) => {
       <p className="text-primary-text/80 text-sm leading-relaxed">
         {props.skill.desc}
       </p>
+      {props.skill.projectLink && (
+        <Link
+          href={props.skill.projectLink.href}
+          target={props.skill.projectLink.external ? "_blank" : undefined}
+          rel={props.skill.projectLink.external ? "noopener noreferrer" : undefined}
+          className="text-xs font-semibold text-primary-accent hover:underline w-fit"
+        >
+          View {props.skill.projectLink.label} →
+        </Link>
+      )}
     </div>
   );
 };

@@ -47,7 +47,7 @@ const Homepage = () => {
         <HomepageIntro />
         <p className="md:text-xl">
           Senior Software Engineer at Capital One, where I work across the stack
-          with TypeScript, Angular, C#, and .NET. Outside of work I ship side
+          with TypeScript, C#, and .NET. Outside of work I ship side
           projects, tinker in my home lab, and write about what I&apos;m
           learning.
         </p>

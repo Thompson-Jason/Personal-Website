@@ -16,6 +16,15 @@ const skillsByCategory = CATEGORY_ORDER.map((category) => ({
   skills: skillList.filter((skill) => skill.category === category),
 })).filter((group) => group.skills.length > 0);
 
+// Skill names can contain characters (#, /, spaces) that aren't valid in an
+// HTML id or a bare URL fragment - slugify for the anchor, keep the raw name
+// for display.
+const skillSlug = (name: string) =>
+  name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 const SkillsPage = () => {
   return (
     <div className="overflow-x-hidden text-primary-text">
@@ -40,7 +49,7 @@ const SkillsPage = () => {
               <div className="flex gap-2 sm:gap-4 flex-wrap items-center justify-center">
                 {skills.map((skill: Skill) => (
                   <Link
-                    href={`#${skill.name}`}
+                    href={`#${skillSlug(skill.name)}`}
                     key={skill.name}
                     className="rounded px-3 py-2 text-sm cursor-pointer bg-primary-bg text-primary-text hover:bg-primary-accent hover:text-primary-secondary transition-colors"
                   >
@@ -62,7 +71,7 @@ const SkillsPage = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                 {skills.map((skill: Skill) => (
                   <div
-                    id={skill.name}
+                    id={skillSlug(skill.name)}
                     key={skill.name}
                     className={CARD_STYLES}
                   >

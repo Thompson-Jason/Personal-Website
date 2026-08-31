@@ -10,7 +10,7 @@ export const metadata = {
   description:
     "Portfolio website showcasing Jason Thompson's software engineering projects, skills, and experience at Capital One.",
   keywords:
-    "Jason Thompson, Software Engineer, Portfolio, Capital One, React, Next.js, TypeScript, Java, Python, C++",
+    "Jason Thompson, Software Engineer, Portfolio, Capital One, React, Next.js, TypeScript, C#, .NET, Java, Swift, C++",
   authors: [{ name: "Jason Thompson" }],
   creator: "Jason Thompson",
   openGraph: {
