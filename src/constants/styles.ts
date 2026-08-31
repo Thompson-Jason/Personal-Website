@@ -28,6 +28,14 @@ export const BORDER_RADIUS = {
 // Focus styles for accessibility
 export const FOCUS_STYLES = 'focus:outline-none focus:ring-2 focus:ring-primary-accent' as const;
 
+// Raw color values for contexts that can't use a Tailwind class - e.g.
+// framer-motion's `animate` prop, which needs an actual CSS value, not a
+// class name. Keep these in sync with the matching token in
+// tailwind.config.ts (colors.primary.*) by hand; there's no automated link.
+export const RAW_COLORS = {
+  text: '#cad3f5', // primary.text
+} as const;
+
 // Card surface: flat, bordered, no shadow. One consistent elevation signal
 // across skills/blog/homepage cards instead of stacking border+shadow+scale.
 export const CARD_STYLES = 'bg-primary-surface rounded-xl border border-primary-border p-4 sm:p-6' as const;

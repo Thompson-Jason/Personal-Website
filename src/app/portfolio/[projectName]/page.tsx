@@ -16,7 +16,7 @@ const ProjectPage = ({ params }: Props) => {
   const isAppProject = project.card.type === "app";
 
   return (
-    <div className="min-h-screen flex flex-col gap-6 sm:gap-8 md:gap-10 text-[#cad3f5]">
+    <div className="min-h-screen flex flex-col gap-6 sm:gap-8 md:gap-10 text-primary-text">
       <div
         className="relative w-full h-40 sm:h-52 md:h-72 lg:h-96 xl:h-[50vh] overflow-hidden"
       >
@@ -46,7 +46,7 @@ const ProjectPage = ({ params }: Props) => {
       </div>
       <Link
         href={project.url}
-        className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 underline text-[#7dc4e4]"
+        className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 underline text-primary-accent"
       >
         {project.name.replace("_", " ")}
       </Link>

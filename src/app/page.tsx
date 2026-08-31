@@ -40,7 +40,7 @@ const Homepage = () => {
           fill
           priority
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="rounded-t-3xl object-contain"
+          className="rounded-3xl object-contain shadow-xl"
         />
       </section>
       <section className="lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text text-center lg:text-left">

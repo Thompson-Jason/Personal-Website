@@ -16,7 +16,7 @@ const PortfolioPage = () => {
           </h3>
         </div>
       </div>
-      <div className="flex flex-row flex-wrap text-[#cad3f5] justify-center gap-4 sm:gap-5 px-4 sm:py-3 md:py-8 lg:py-16 xl:py-24">
+      <div className="flex flex-row flex-wrap text-primary-text justify-center gap-4 sm:gap-5 px-4 sm:py-3 md:py-8 lg:py-16 xl:py-24">
         {visibleProjects.map((project: Project) => (
           <Link href={`/portfolio/${project.name}`} key={project.name}>
             <PortfolioPane project={project} />
