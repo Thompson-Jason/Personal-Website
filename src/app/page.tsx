@@ -1,29 +1,40 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  RESPONSIVE_PADDING,
-  BUTTON_STYLES,
-  CARD_HOVER_STYLES,
-} from "@/constants/styles";
+import { RESPONSIVE_PADDING, BUTTON_STYLES } from "@/constants/styles";
 import { getAllPosts } from "@/lib/blog";
 import { generateDescription } from "@/lib/description";
 import HomepageIntro from "@/components/homepageIntro";
 import { getMostRecentlyUpdatedProject } from "@/data/projects";
+import { getRecentGitHubActivity } from "@/lib/github";
+import { isWithinDays } from "@/lib/dates";
+import RecentlyActiveCard from "@/components/recentlyActiveCard";
 
 export const dynamic = "error";
 
-const Homepage = () => {
+const Homepage = async () => {
   const posts = getAllPosts();
   const latestPost = posts.length > 0 ? posts[0] : null;
   const latestProject = getMostRecentlyUpdatedProject();
+  const githubActivity = await getRecentGitHubActivity();
 
-  // Show whichever is more recent: the latest blog post, or the latest
-  // hand-marked project update. Keeps the homepage honest about side-project
-  // work that never gets a blog post written about it.
-  const showProject =
-    latestProject &&
-    (!latestPost || latestProject.updated! > latestPost.date);
+  // "Recently Active" priority:
+  // 1. The latest blog post, as long as it's under a month old.
+  // 2. Otherwise, whichever is more recent: a hand-marked project update,
+  //    or real GitHub commit activity across all repos.
+  // 3. If neither of those exists, fall back to the blog post anyway (even
+  //    if stale) rather than showing nothing.
+  const postIsFresh = !!latestPost && isWithinDays(latestPost.date, 30);
+
+  let recentlyActive: "post" | "project" | "github" | "none" = "none";
+  if (postIsFresh) {
+    recentlyActive = "post";
+  } else if (latestProject || githubActivity) {
+    const projectDate = latestProject?.updated ?? "";
+    const githubDate = githubActivity?.latestDate ?? "";
+    recentlyActive = projectDate >= githubDate ? "project" : "github";
+  } else if (latestPost) {
+    recentlyActive = "post";
+  }
 
   return (
     <main
@@ -67,54 +78,42 @@ const Homepage = () => {
             Read My Blog
           </Link>
         </div>
-        {showProject ? (
-          <Link
+        {recentlyActive === "post" && latestPost && (
+          <RecentlyActiveCard
+            href={`/blog/${latestPost.slug}`}
+            ariaLabel={`Read my latest blog post: ${latestPost.title}`}
+            title={latestPost.title}
+            date={latestPost.date}
+            description={
+              latestPost.description ?? generateDescription(latestPost.content)
+            }
+          />
+        )}
+        {recentlyActive === "project" && latestProject && (
+          <RecentlyActiveCard
             href={`/portfolio/${latestProject.name}`}
-            className="block w-full max-w-xl"
-            aria-label={`See what I'm building: ${latestProject.name.replace(
+            ariaLabel={`See what I'm building: ${latestProject.name.replace(
               "_",
               " "
             )}`}
-          >
-            <div className={`${CARD_HOVER_STYLES} text-left`}>
-              <div className="text-xs font-semibold uppercase tracking-wide text-primary-accent">
-                Recently Active
-              </div>
-              <h2 className="text-xl font-bold mt-1 hover:underline">
-                {latestProject.name.replace("_", " ")}
-              </h2>
-              <div className="text-xs text-primary-text/60 mt-1">
-                {latestProject.updated}
-              </div>
-              <div className="text-sm text-primary-text/80 mt-2 line-clamp-3">
-                {latestProject.short_desc}
-              </div>
-            </div>
-          </Link>
-        ) : (
-          latestPost && (
-            <Link
-              href={`/blog/${latestPost.slug}`}
-              className="block w-full max-w-xl"
-              aria-label={`Read my latest blog post: ${latestPost.title}`}
-            >
-              <div className={`${CARD_HOVER_STYLES} text-left`}>
-                <div className="text-xs font-semibold uppercase tracking-wide text-primary-accent">
-                  Recently Active
-                </div>
-                <h2 className="text-xl font-bold mt-1 hover:underline">
-                  {latestPost.title}
-                </h2>
-                <div className="text-xs text-primary-text/60 mt-1">
-                  {latestPost.date}
-                </div>
-                <div className="text-sm text-primary-text/80 mt-2 line-clamp-3">
-                  {latestPost.description ??
-                    generateDescription(latestPost.content)}
-                </div>
-              </div>
-            </Link>
-          )
+            title={latestProject.name.replace("_", " ")}
+            date={latestProject.updated!}
+            description={latestProject.short_desc}
+          />
+        )}
+        {recentlyActive === "github" && githubActivity && (
+          <RecentlyActiveCard
+            href="https://github.com/Thompson-Jason"
+            external
+            ariaLabel="See my recent activity on GitHub"
+            title="Actively coding"
+            date={githubActivity.latestDate}
+            description={`${githubActivity.pushCount} push${
+              githubActivity.pushCount === 1 ? "" : "es"
+            } across ${githubActivity.repoCount} repo${
+              githubActivity.repoCount === 1 ? "" : "s"
+            } in the last ${githubActivity.windowDays} days.`}
+          />
         )}
       </section>
     </main>
