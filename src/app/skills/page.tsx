@@ -3,6 +3,7 @@ import Skillblock from "@/components/skillblock";
 import Link from "next/link";
 import { Skill, SkillCategory, skillList } from "@/data/skills";
 import { CARD_STYLES } from "@/constants/styles";
+import TiltCard from "@/components/tiltCard";
 
 const CATEGORY_ORDER: Array<SkillCategory> = [
   "Languages",
@@ -70,13 +71,13 @@ const SkillsPage = () => {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                 {skills.map((skill: Skill) => (
-                  <div
+                  <TiltCard
                     id={skillSlug(skill.name)}
                     key={skill.name}
                     className={CARD_STYLES}
                   >
                     <Skillblock skill={skill} />
-                  </div>
+                  </TiltCard>
                 ))}
               </div>
             </section>

@@ -10,8 +10,13 @@ type BaseProject = {
   // project. Bump it by hand when you work on something here even if you
   // don't write a blog post about it — the homepage "Recently Active" card
   // shows whichever is newer: this date, or your latest blog post.
-  // Left unset below since I don't know your real timelines; fill these in.
   updated?: string;
+  // Exclude from the "Recently Active" comparison even though `updated` is
+  // set and the project is otherwise visible. Personal_Website uses this -
+  // it'd otherwise almost always "win" while actively being worked on,
+  // and linking to a portfolio page about this exact site from this exact
+  // site is circular.
+  excludeFromRecentlyActive?: boolean;
 };
 
 type WebsiteProject = BaseProject & {
@@ -40,6 +45,8 @@ export const projects: Project[] = [
     card: { type: "website" },
     alt_text: "A picture of the homepage of my personal portfolio website",
     url: "https://github.com/Thompson-Jason/Personal-Website",
+    updated: "2026-08-31",
+    excludeFromRecentlyActive: true,
   },
 
   {
@@ -52,6 +59,7 @@ export const projects: Project[] = [
     card: { type: "website" },
     alt_text: "A picture of the Github repo of the DockSprout project.",
     url: "https://github.com/Thompson-Jason/DockSprout",
+    updated: "2025-08-31",
   },
 
   {
@@ -68,6 +76,7 @@ export const projects: Project[] = [
     },
     alt_text: "The blue and teal SumIt iOS app icon.",
     url: "https://apps.apple.com/us/app/sumit-tracker/id6755155624",
+    updated: "2026-07-31",
   },
 
   {
@@ -80,6 +89,7 @@ export const projects: Project[] = [
     alt_text: "A preview card for simplycandid.",
     url: "https://simplycandid.app",
     hidden: true,
+    updated: "2026-08-24",
   },
 
   // {
@@ -109,7 +119,9 @@ export const visibleProjects = projects.filter((project) => !project.hidden);
 // Most recently touched visible project, based on `updated`. Returns null
 // if no visible project has an `updated` date set.
 export function getMostRecentlyUpdatedProject(): Project | null {
-  const dated = visibleProjects.filter((project) => project.updated);
+  const dated = visibleProjects.filter(
+    (project) => project.updated && !project.excludeFromRecentlyActive
+  );
   if (dated.length === 0) return null;
   return dated.reduce((latest, project) =>
     project.updated! > latest.updated! ? project : latest
