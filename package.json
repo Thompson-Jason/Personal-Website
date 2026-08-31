@@ -7,7 +7,7 @@
     "build": "next build",
     "blog:draft": "node scripts/create-draft-post.mjs",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
