@@ -4,6 +4,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import { RESPONSIVE_PADDING } from "@/constants/styles";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 const SITE_URL = "https://jasonthompson.org";
 export const dynamic = "error";
@@ -87,19 +88,11 @@ export default async function BlogPostByIdentifier({
       const { data, content } = getPost(identifier);
       post = { data, content, slug: identifier };
     } catch {
-      return (
-        <main className="min-h-screen flex items-center justify-center text-primary-error text-2xl">
-          Post not found.
-        </main>
-      );
+      notFound();
     }
   }
   if (!post) {
-    return (
-      <main className="min-h-screen flex items-center justify-center text-primary-error text-2xl">
-        Post not found.
-      </main>
-    );
+    notFound();
   }
   const { data, content } = post;
   const processed = await remark().use(html).process(content);
