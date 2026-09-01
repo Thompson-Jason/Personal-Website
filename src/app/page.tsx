@@ -51,7 +51,7 @@ const Homepage = async () => {
           fill
           priority
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="rounded-3xl object-contain shadow-xl"
+          className="rounded-[2.5rem] object-cover object-top shadow-2xl shadow-primary-accent/20"
         />
       </section>
       <section className="lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center text-primary-text text-center lg:text-left">
