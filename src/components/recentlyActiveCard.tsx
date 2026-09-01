@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CARD_HOVER_STYLES } from "@/constants/styles";
+import TiltCard from "@/components/tiltCard";
 
 type Props = {
   href: string;
@@ -25,7 +26,7 @@ const RecentlyActiveCard = ({
     className="block w-full max-w-xl"
     aria-label={ariaLabel}
   >
-    <div className={`${CARD_HOVER_STYLES} text-left`}>
+    <TiltCard className={`${CARD_HOVER_STYLES} text-left`}>
       <div className="text-xs font-semibold uppercase tracking-wide text-primary-accent">
         Recently Active
       </div>
@@ -34,7 +35,7 @@ const RecentlyActiveCard = ({
       <div className="text-sm text-primary-text/80 mt-2 line-clamp-3">
         {description}
       </div>
-    </div>
+    </TiltCard>
   </Link>
 );
 
