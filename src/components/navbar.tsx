@@ -8,6 +8,7 @@ import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import NavLink from "@/components/navLink";
 import { motion } from "framer-motion";
 import { useTransitionNavigation } from "@/components/transitionNavigation";
+import { RAW_COLORS } from "@/constants/styles";
 
 const links = [
   { url: "/", title: "Home" },
@@ -26,7 +27,7 @@ const Navbar = () => {
     },
     opened: {
       rotate: 45,
-      backgroundColor: "rgb(202, 211, 245)",
+      backgroundColor: RAW_COLORS.text,
     },
   };
 
@@ -45,7 +46,7 @@ const Navbar = () => {
     },
     opened: {
       rotate: -45,
-      backgroundColor: "rgb(202, 211, 245)",
+      backgroundColor: RAW_COLORS.text,
     },
   };
 

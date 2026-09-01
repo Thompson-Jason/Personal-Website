@@ -2,8 +2,9 @@ import { getAllPosts, getPost, getPostByNumber } from "@/lib/blog";
 import { generateDescription } from "@/lib/description";
 import { remark } from "remark";
 import html from "remark-html";
-import { RESPONSIVE_PADDING } from "@/constants/styles";
+import { RESPONSIVE_PADDING, CARD_STYLES } from "@/constants/styles";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 const SITE_URL = "https://jasonthompson.org";
 export const dynamic = "error";
@@ -87,19 +88,11 @@ export default async function BlogPostByIdentifier({
       const { data, content } = getPost(identifier);
       post = { data, content, slug: identifier };
     } catch {
-      return (
-        <main className="min-h-screen flex items-center justify-center text-primary-error text-2xl">
-          Post not found.
-        </main>
-      );
+      notFound();
     }
   }
   if (!post) {
-    return (
-      <main className="min-h-screen flex items-center justify-center text-primary-error text-2xl">
-        Post not found.
-      </main>
-    );
+    notFound();
   }
   const { data, content } = post;
   const processed = await remark().use(html).process(content);
@@ -108,7 +101,7 @@ export default async function BlogPostByIdentifier({
       className={`min-h-screen bg-primary-bg text-primary-text ${RESPONSIVE_PADDING} py-8 flex flex-col items-center`}
       aria-label="Blog post main content"
     >
-      <article className="w-full max-w-3xl bg-primary-surface rounded-xl border border-primary-border shadow-md p-4 sm:p-6 mt-8">
+      <article className={`w-full max-w-3xl mt-8 ${CARD_STYLES}`}>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-primary-accent mb-2">
           {data.title}
         </h1>

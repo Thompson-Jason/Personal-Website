@@ -2,8 +2,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Skills - Jason Thompson",
-  description: "Technical skills and background including Java, C++, Python, React, Next.js, and more technologies used by Jason Thompson.",
-  keywords: "skills, Java, C++, Python, React, Next.js, TypeScript, software engineering",
+  description: "Technical skills and background including TypeScript, C#, .NET, Java, Swift, and more technologies used by Jason Thompson.",
+  keywords: "skills, TypeScript, C#, .NET, Java, Swift, React, Next.js, software engineering",
   openGraph: {
     title: "Skills - Jason Thompson",
     description: "Technical skills and programming expertise",

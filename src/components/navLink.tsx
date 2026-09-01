@@ -20,7 +20,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link }) => {
     <div>
       <Link
         className={`rounded p-1 ${
-          pathName === link.url && "bg-[#494d64] text-[#cad3f5]"
+          pathName === link.url && "bg-primary-hover text-primary-text"
         }`}
         href={link.url}
         onClick={(event) => {
