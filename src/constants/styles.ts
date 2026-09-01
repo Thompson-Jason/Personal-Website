@@ -28,6 +28,21 @@ export const BORDER_RADIUS = {
 // Focus styles for accessibility
 export const FOCUS_STYLES = 'focus:outline-none focus:ring-2 focus:ring-primary-accent' as const;
 
+// Raw color values for contexts that can't use a Tailwind class - e.g.
+// framer-motion's `animate` prop, which needs an actual CSS value, not a
+// class name. Keep these in sync with the matching token in
+// tailwind.config.ts (colors.primary.*) by hand; there's no automated link.
+export const RAW_COLORS = {
+  text: '#cad3f5', // primary.text
+} as const;
+
+// Card surface: flat, bordered, no shadow. One consistent elevation signal
+// across skills/blog/homepage cards instead of stacking border+shadow+scale.
+export const CARD_STYLES = 'bg-primary-surface rounded-xl border border-primary-border p-4 sm:p-6' as const;
+// Use on cards that are actual links/clickable targets; border color is the
+// only hover cue (no shadow growth, no scale-up).
+export const CARD_HOVER_STYLES = `${CARD_STYLES} transition-colors duration-200 hover:border-primary-accent` as const;
+
 // Button styles
 export const BUTTON_STYLES = {
   primary: `${SPACING.sm} ${BORDER_RADIUS.md} bg-primary-accent text-primary-secondary font-semibold hover:bg-primary-hover transition-colors ${FOCUS_STYLES}`,

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Project } from "@/data/projects";
+import { CARD_HOVER_STYLES } from "@/constants/styles";
 
 type PropsList = { project: Project };
 
@@ -8,13 +9,15 @@ const PortfolioPane = (props: PropsList) => {
   const isAppCard = props.project.card.type === "app";
 
   return (
-    <div className="flex w-[90vw] max-w-full flex-col items-center justify-center sm:w-[420px] md:w-[480px]">
+    <div
+      className={`${CARD_HOVER_STYLES} flex w-[90vw] max-w-full flex-col items-center justify-center sm:w-[420px] md:w-[480px]`}
+    >
       <h1 className="font-semibold py-2">
         {props.project.name.replace("_", " ")}
       </h1>
       <div
         className={`relative h-[200px] w-full overflow-hidden rounded sm:h-[220px] md:h-[235px] ${
-          isAppCard ? "bg-transparent" : "shadow-md"
+          isAppCard ? "bg-transparent" : ""
         }`}
       >
         {props.project.card.type === "app" ? (
