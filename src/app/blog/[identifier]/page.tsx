@@ -101,7 +101,7 @@ export default async function BlogPostByIdentifier({
       className={`min-h-screen bg-primary-bg text-primary-text ${RESPONSIVE_PADDING} py-8 flex flex-col items-center`}
       aria-label="Blog post main content"
     >
-      <article className={`w-full max-w-3xl mt-8 ${CARD_STYLES}`}>
+      <article className={`w-full max-w-6xl mt-8 ${CARD_STYLES}`}>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-primary-accent mb-2">
           {data.title}
         </h1>
@@ -120,7 +120,7 @@ export default async function BlogPostByIdentifier({
           {data.date}
         </div>
         <div
-          className="prose prose-invert max-w-none"
+          className="prose prose-invert max-w-none prose-code:before:content-none prose-code:after:content-none"
           dangerouslySetInnerHTML={{ __html: processed.toString() }}
         />
       </article>

@@ -35,7 +35,7 @@ export default function BlogPage() {
             </Link>
           </div>
         </div>
-        <div className="w-full max-w-3xl mt-8 grid gap-6">
+        <div className="w-full max-w-6xl mt-8 grid gap-6">
           {posts.map((post: any) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
               <div className={CARD_HOVER_STYLES}>
